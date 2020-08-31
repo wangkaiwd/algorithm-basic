@@ -9,6 +9,7 @@
 * O(n!): Factorial 阶乘
 
 例子：
+
 O(N)
 ```javascript
 for(let i = 0; i < n; i++) {
