@@ -11,8 +11,26 @@
 //   Minimize the total number of operations.
 
 // 暴力解法： 将所有元素往前移动一位，将0放到数组的最后一位。 问题： 会导致数组的遍历出现问题,并且移动之后的0还会继续参与遍历
-const nums = [0, 1, 0, 3, 12];
+const nums = [0, 1, 2, 0, 3, 12];
+
+// 思路1:
 const moveZeroes = (nums) => {
+  let insertPos = 0;
+  const length = nums.length;
+  for (let i = 0; i < length; i++) {
+    if (nums[i] !== 0) {
+      nums[insertPos++] = nums[i];
+    }
+  }
+  while (insertPos < length) {
+    nums[insertPos++] = 0;
+  }
+};
+moveZeroes(nums);
+console.log('nums', nums);
+
+// 思路2：
+const moveZeroes1 = (nums) => {
   let pos = 0;
   const length = nums.length;
   for (let i = 0; i < length; i++) {
@@ -23,9 +41,4 @@ const moveZeroes = (nums) => {
     }
   }
 };
-moveZeroes(nums);
-console.log('nums', nums);
-
-// 思路1：
-//  1. 记录非0
-
+moveZeroes1(nums);
