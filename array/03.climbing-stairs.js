@@ -36,17 +36,18 @@
 
 // 解法2：
 // 上边的求解方法会有很多重复计算，我们可以通过数组，来将计算过得值进行缓存，如果再次遇到该值，从缓存中查找
-const climbStairs1 = (n, memos = []) => { // 从1到n所有的台阶的总数
-  if (n === 1) {return 1;}
-  if (n === 2) {return 2;}
-  if (memos[n]) { // 通过数组缓存计算过的结果
-    return memos[n];
-  }
-  memos[n] = climbStairs1(n - 1, memos) + climbStairs1(n - 2, memos);
-  return memos[n];
-};
-console.log(climbStairs1(10));
+// const climbStairs1 = (n, memos = []) => { // 从1到n所有的台阶的总数
+//   if (n === 1) {return 1;}
+//   if (n === 2) {return 2;}
+//   if (memos[n]) { // 通过数组缓存计算过的结果
+//     return memos[n];
+//   }
+//   memos[n] = climbStairs1(n - 1, memos) + climbStairs1(n - 2, memos);
+//   return memos[n];
+// };
+// console.log(climbStairs1(10));
 // // 1 2 3 4 5 6 7
+// 解法3
 // const climbStairs2 = (n) => {
 //   if (n === 1) {return 1;}
 //   if (n === 2) {return 2;}
@@ -59,3 +60,22 @@ console.log(climbStairs1(10));
 //   return dp[n - 1];
 // };
 // console.log(climbStairs2(10));
+
+// 解法4：
+// const climbStairs3 = (n) => {
+//   if (n === 1) {
+//     return 1;
+//   }
+//   if (n === 2) {
+//     return 2;
+//   }
+//   let first = 1, second = 2, result = null;
+//   for (let i = 3; i <= n; i++) {
+//     result = first + second;
+//     first = second;
+//     second = result;
+//   }
+//   return result;
+// };
+//
+// console.log(climbStairs3(10));
