@@ -6,7 +6,7 @@
 * 3sum(高频老题)
 
 #### Linked List
-* reverse lined list
+* reverse linked list
 * swap nodes in pairs
 * linked list cycle
 * linked list cycle ii
