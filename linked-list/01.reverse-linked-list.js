@@ -6,20 +6,26 @@
 
 // Approach 1：
 // 时间复杂度: O(n)
-const head = [1, 2, 3, 4, 5];
+// const head = [1, 2, 3, 4, 5];
+// const reverseList = (head) => {
+//   let current = head;
+//   let prev = null;
+//   while (current) {
+//     // 保存下一个节点
+//     // 1->2->3->4->5->NULL
+//     const temp = current.next;
+//     current.next = prev;
+//     prev = current;
+//     current = temp;
+//   }
+//   return prev;
+// };
+//
+// console.log(reverseList(head));
+//
+
+// 递归，由于创建了n个函数，所以空间复杂度：O(n)
+// const head = [1, 2, 3, 4, 5];
 const reverseList = (head) => {
-  let current = head;
-  let next = null;
-  while (current) {
-    // 保存下一个节点
-    // 1->2->3->4->5->NULL
-    const temp = current.next;
-    current.next = next;
-    next = current;
-    current = temp;
-  }
-  return next;
+  // 递归进行处理
 };
-
-console.log(reverseList(head));
-
