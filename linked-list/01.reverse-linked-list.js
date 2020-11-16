@@ -4,6 +4,7 @@
 // Input: 1->2->3->4->5->NULL
 // Output: 5->4->3->2->1->NULL
 
+// https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/solution/jian-zhi-offer-24-fan-zhuan-lian-biao-die-dai-di-2/
 // Approach 1：
 // 时间复杂度: O(n)
 // const head = [1, 2, 3, 4, 5];
@@ -24,7 +25,6 @@
 // console.log(reverseList(head));
 //
 
-// https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/solution/fan-zhuan-lian-biao-yi-dong-de-shuang-zhi-zhen-jia/
 // 递归，由于创建了n个函数，所以空间复杂度：O(n)
 // const head = [1, 2, 3, 4, 5];
 // // 1->2->3->4->5->NULL
@@ -38,5 +38,4 @@
 //   head.next = null;
 //   return result;
 // };
-
 
