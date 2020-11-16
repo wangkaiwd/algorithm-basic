@@ -13,24 +13,49 @@
 // Input: head = [1]
 // Output: [1]
 
-const head = { value: 1, next: { value: 2, next: { value: 3, next: { value: 4, next: null } } } };
-// 递归解法: https://lyl0724.github.io/2020/01/25/1/
-// 递归需要关注的3个点： 1. 返回值: 已经交换好的链表 2. 调用单元做了什么: head,next,已经交换好的链表，将head和next进行交换 3. 终止条件: 链表只剩一个节点或者没有节点的时候，递归终止
-// [1,2,3,4]
-// 1.  next=2,  head=1 -> next=2 -> swapPairs(3)
-// 2.  swapPairs(3), next = 4,  head=3 -> null
-// 3.  next=4 -> head=3 -> null
-// 4.  head=1 -> next=2 -> 4 -> 3 -> null
-// 5.  next=2 -> head=1-> 4 -> 3 -> null
+// const head = { value: 1, next: { value: 2, next: { value: 3, next: { value: 4, next: null } } } };
+// // 递归解法: https://lyl0724.github.io/2020/01/25/1/
+// // 递归需要关注的3个点： 1. 返回值: 已经交换好的链表 2. 调用单元做了什么: head,next,已经交换好的链表，将head和next进行交换 3. 终止条件: 链表只剩一个节点或者没有节点的时候，递归终止
+// // [1,2,3,4]
+// // 1.  next=2,  head=1 -> next=2 -> swapPairs(3)
+// // 2.  swapPairs(3), next = 4,  head=3 -> null
+// // 3.  next=4 -> head=3 -> null
+// // 4.  head=1 -> next=2 -> 4 -> 3 -> null
+// // 5.  next=2 -> head=1-> 4 -> 3 -> null
+//
+// const swapPairs1 = (head) => {
+//   if (head == null || head.next == null) {
+//     return head;
+//   }
+//   // 交换 head,next, swapPairs1(next.next)
+//   const next = head.next; //
+//   head.next = swapPairs1(next.next); //
+//   next.next = head;
+//   return next;
+// };
+// console.log(swapPairs1(head));
 
-const swapPairs1 = (head) => {
-  if (head == null || head.next == null) {
-    return head;
+class ListNode {
+  constructor (element, next) {
+    this.element = element;
+    this.next = next;
   }
-  // 交换 head,next, swapPairs1(next.next)
-  const next = head.next; //
-  head.next = swapPairs1(next.next); //
-  next.next = head;
-  return next;
+}
+
+const head = { value: 1, next: { value: 2, next: { value: 3, next: { value: 4, next: null } } } };
+const swapPairs2 = (head) => {
+  // 创建一个新的链表，将链表的元素交换完成后，返回dummy.next，即为交换完成后的链表
+  const dummy = new ListNode(0, head);
+  let current = dummy;
+  // [1,2,3,4]
+  while ((current.next !== null) && (current.next.next !== null)) {
+    let first = current.next;
+    let second = current.next.next;
+    first.next = second.next;
+    current.next = second;
+    current.next.next = first;
+    current = current.next.next;
+  }
+  return dummy.next;
 };
-console.log(swapPairs1(head));
+console.log('pairs', swapPairs2(head));
