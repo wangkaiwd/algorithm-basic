@@ -22,17 +22,17 @@ head.next.next.next.next = head.next;
 // linked list cycle
 // Set object: lets you store unique values of any type, whether primitive values or object references
 // set can store object reference, this question object reference not change
-const detectCycle1 = (head) => {
-  const set = new Set();
-  while (head) {
-    if (set.has(head)) {
-      return head;
-    } else {
-      set.add(head);
-    }
-    head = head.next;
-  }
-  return null;
-};
-
-console.log('result', detectCycle1(head));
+// const detectCycle1 = (head) => {
+//   const set = new Set();
+//   while (head) {
+//     if (set.has(head)) {
+//       return head;
+//     } else {
+//       set.add(head);
+//     }
+//     head = head.next;
+//   }
+//   return null;
+// };
+//
+// console.log('result', detectCycle1(head));
