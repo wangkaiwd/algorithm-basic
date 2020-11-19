@@ -36,3 +36,9 @@ head.next.next.next.next = head.next;
 // };
 //
 // console.log('result', detectCycle1(head));
+
+const detectCycle2 = (head) => {
+
+};
+
+
