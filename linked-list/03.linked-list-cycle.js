@@ -38,8 +38,7 @@ const hasCycle1 = (head) => {
 
 console.log(hasCycle1(head));
 
-
-// 在一个圆形轨道内，2个物体在运动，如果慢速的每次走一步，快速的每次走俩步，最终快速的物体最终会和慢速的物体相遇
+// 在一个圆形轨道内，2个物体在运动，如果慢速的每次走一步，快速的每次走俩步，最终快速的物体会和慢速的物体相遇
 const hasCycle2 = (head) => {
   if (head == null) {return false;}
   let slow = head;
