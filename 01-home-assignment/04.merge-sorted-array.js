@@ -38,8 +38,43 @@ const merge2 = (nums1, m, nums2, n) => {
     }
   }
   // 当nums1Copy或num2遍历完成后，循环终止
+
+  // num2 剩余
+  while ((p1 >= m) && (i < (m + n))) {
+    nums1[i++] = nums2[p2++];
+  }
+
+  // num1Copy 剩余
+  while ((p2 >= n) && (i < (m + n))) {
+    nums1[i++] = nums1Copy[p1++];
+  }
+  return nums1;
 };
+console.log(merge2(nums1, 3, nums2, 3));
 
-
-// const nums1 = [3, 0, 0, 0];
-// const nums2 = [1,2,4];
+// 利用双指针，从后往前遍历，这样不用保存原数组
+// 分析：nums1中的内容是从小到大排序好的，在修改其内容之前，肯定会将其后移，或原位不动，这样便不会造成无法取到原来的数值
+// 空间复杂度降低
+// const nums1 = [1, 2, 3, 0, 0, 0];
+// const nums2 = [2, 5, 6];
+const merge3 = function (nums1, m, nums2, n) {
+  let p1 = m - 1;
+  let p2 = n - 1;
+  let p = m + n - 1;
+  while ((p1 >= 0) && (p2 >= 0)) {
+    if (nums1[p1] > nums2[p2]) {
+      nums1[p--] = nums1[p1--];
+    } else {
+      nums1[p--] = nums2[p2--];
+    }
+  }
+  // 如果循环完成后，nums2中还有内容
+  if (p2 >= 0) {
+    for (let i = p2; i >=0; i--) {
+      nums1[p--] = nums2[i];
+    }
+  }
+  // 如果循环完成后，nums1中还有内容，那么内容的顺序不用再进行处理
+  return nums1;
+};
+console.log(merge3(nums1, 3, nums2, 3));
