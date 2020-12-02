@@ -5,7 +5,7 @@
 //        2. 从j指针到数组最后一项，找出最小值，与i指针对应的值进行替换
 //        3. i指针向后移一位, 继续重复之前的步骤，直到i指针到了数组的最后一项，说明完成了排序
 
-// const arr = [5, 2, 6, 3, 1, 10];
+const arr = [5, 2, 6, 3, 1, 10];
 //
 // function sort1 (arr) {
 //   const newArr = [];
@@ -31,8 +31,8 @@
 
 // 原地排序
 // function sort2 (arr) {
-//   let i = 0;
-//   while (i < arr.length) {
+//   // arr[0...i) 是有序的； arr[i...n)是无序的
+//   for (let i = 0; i < arr.length; i++) {
 //     let minIndex = i;
 //     // 找出最小索引
 //     for (let j = i; j < arr.length; j++) {
@@ -41,12 +41,16 @@
 //       }
 //     }
 //     // 最小索引的元素和i对应的元素位置互换
-//     const temp = arr[minIndex];
-//     arr[minIndex] = arr[i];
-//     arr[i] = temp;
-//     i++;
+//     swap(arr, i, minIndex);
 //   }
 //   return arr;
 // }
 //
+// function swap (arr, i, j) {
+//   const t = arr[i];
+//   arr[i] = arr[j];
+//   arr[j] = t;
+// }
+//
 // sort2(arr);
+// console.log(arr);
