@@ -37,6 +37,11 @@
 * getSize
 * isEmpty
 
-循环队列：
+循环队列：添加`front`和`tail`指针
+
+* front === tail 队列为空
+* (tail+1) % c(数组长度) === front 队列满
+
+双端队列：在队列的俩端添加/删除元素
 
 ### 链表
