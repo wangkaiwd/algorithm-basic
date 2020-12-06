@@ -67,9 +67,10 @@ MyArray.prototype.remove = function (index) {
   this.size--;
   // 释放内容，方便进行垃圾回收
   this.data[this.size] = null;
-  const halfLength = this.data.length / 2;
-  if (this.size === halfLength) {
-    this.resize(halfLength);
+  const quarterLength = this.data.length / 4;
+  // Lazy: size 为数组的长度的1/4才进行缩容，缩小的范围为数组长度的1/2
+  if ((this.size === quarterLength) && (this.data.length / 2 !== 0)) {
+    this.resize(this.data.length / 2);
   }
   return result;
 };
