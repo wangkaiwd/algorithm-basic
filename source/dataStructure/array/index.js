@@ -18,7 +18,7 @@ MyArray.prototype.arrayFull = function () {
   }
 };
 MyArray.prototype.illegalIndex = function (index) {
-  if (index < 0 || index >= this.size) {
+  if (index < 0 || index > this.size) {
     throw Error('Index exceed max limit');
   }
 };
@@ -63,10 +63,22 @@ MyArray.prototype.delete = function (index) {
   this.size--;
 };
 MyArray.prototype.deleteFirst = function () {
-
+  this.delete(0);
 };
 MyArray.prototype.deleteLast = function () {
-
+  this.delete(this.size);
+};
+MyArray.prototype.toString = function () {
+  console.log(`Array: size = ${this.size}, capacity = ${this.capacity}`);
+  let str = '[';
+  for (let i = 0; i < this.size; i++) {
+    str += this.data[i];
+    if (i !== this.size - 1) {
+      str += ', ';
+    }
+  }
+  console.log(str);
 };
 
+module.exports = MyArray;
 
