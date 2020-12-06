@@ -55,18 +55,55 @@ MyArray.prototype.add = function (index, e) {
   this.size++;
 };
 
-MyArray.prototype.delete = function (index) {
+// 移除对应索引的元素，并返回删除的元素
+MyArray.prototype.remove = function (index) {
+  this.illegalIndex(index);
   for (let i = index + 1; i < this.size; i++) {
     this.data[i - 1] = this.data[i];
   }
+  const result = this.data[index];
   this.data[this.size] = null;
   this.size--;
+  return result;
 };
-MyArray.prototype.deleteFirst = function () {
-  this.delete(0);
+MyArray.prototype.removeFirst = function () {
+  return this.remove(0);
 };
-MyArray.prototype.deleteLast = function () {
-  this.delete(this.size);
+MyArray.prototype.removeLast = function () {
+  return this.remove(this.size);
+};
+MyArray.prototype.get = function (index) {
+  this.illegalIndex(index);
+  return this.data[index];
+};
+MyArray.prototype.set = function (index, e) {
+  this.illegalIndex(index);
+  this.data[index] = e;
+};
+MyArray.prototype.contain = function (e) {
+  for (let i = 0; i < this.size; i++) {
+    if (this.data[i] === e) {
+      return true;
+    }
+  }
+  return false;
+};
+// 找到元素返回其索引，没有找到返回-1
+MyArray.prototype.indexOf = function (e) {
+  for (let i = 0; i < this.size; i++) {
+    if (this.data[i] === e) {
+      return i;
+    }
+  }
+  return -1;
+};
+MyArray.prototype.removeElement = function (e) {
+  const index = this.indexOf(e);
+  if (index !== -1) {
+    this.remove(index);
+    return true;
+  }
+  return false;
 };
 MyArray.prototype.toString = function () {
   console.log(`Array: size = ${this.size}, capacity = ${this.capacity}`);
@@ -77,6 +114,7 @@ MyArray.prototype.toString = function () {
       str += ', ';
     }
   }
+  str += ']';
   console.log(str);
 };
 
