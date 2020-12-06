@@ -7,7 +7,6 @@
 * getSize
 * getCapacity
 * isEmpty
-* addLast
 * **add**: 要移动插入位置之后的所有元素，为了防止变量覆盖，需要倒着移动
 
 动态数组：自动扩充数组的容量，防止内存浪费
