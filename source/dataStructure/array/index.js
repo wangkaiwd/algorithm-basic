@@ -45,8 +45,10 @@ MyArray.prototype.addFirst = function (e) {
 };
 // 任意位置添加
 MyArray.prototype.add = function (index, e) {
-  this.arrayFull();
   this.illegalIndex(index);
+  if (this.data.length === this.size) {
+    this.resize(this.data.length * 2);
+  }
   for (let i = this.size - 1; i >= index; i--) {
     // 把[index,this.size)中的元素往后移一个位置
     this.data[i + 1] = this.data[i];
@@ -62,8 +64,13 @@ MyArray.prototype.remove = function (index) {
     this.data[i - 1] = this.data[i];
   }
   const result = this.data[index];
-  this.data[this.size] = null;
   this.size--;
+  // 释放内容，方便进行垃圾回收
+  this.data[this.size] = null;
+  const halfLength = this.data.length / 2;
+  if (this.size === halfLength) {
+    this.resize(halfLength);
+  }
   return result;
 };
 MyArray.prototype.removeFirst = function () {
@@ -116,6 +123,15 @@ MyArray.prototype.toString = function () {
   }
   str += ']';
   console.log(str);
+};
+// 对数组的容量自动进行增加和删除，防止占用系统的过多内存
+MyArray.prototype.resize = function (capacity) {
+  const newData = new MyArray(capacity);
+  for (let i = 0; i < this.size; i++) {
+    newData.addLast(this.data[i]);
+  }
+  this.data = newData.data;
+  this.capacity = newData.capacity;
 };
 
 module.exports = MyArray;
