@@ -134,6 +134,12 @@ MyArray.prototype.resize = function (capacity) {
   this.data = newData.data;
   this.capacity = newData.capacity;
 };
+MyArray.prototype.getFirst = function () {
+  return this.get(0);
+};
+MyArray.prototype.getLast = function () {
+  return this.get(this.size - 1);
+};
 
 module.exports = MyArray;
 
