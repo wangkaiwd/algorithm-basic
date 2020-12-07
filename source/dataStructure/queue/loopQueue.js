@@ -36,6 +36,9 @@ class LoopQueue {
   }
 
   getFront () {
+    if (this.isEmpty()) {
+      throw Error('Queue is empty');
+    }
     return this.data[this.front];
   }
 
@@ -59,6 +62,9 @@ class LoopQueue {
       newQueue.data[i] = this.data[(this.front + i) % this.size];
     }
     this.data = newQueue.data;
+    // 重置队首和队尾
+    this.front = 0;
+    this.tail = this.size;
     this.capacity = newQueue.getCapacity();
   }
 }
