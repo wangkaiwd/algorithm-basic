@@ -67,6 +67,12 @@ class LoopQueue {
     this.tail = this.size;
     this.capacity = newQueue.getCapacity();
   }
+
+  // anotherTraverseWay () {
+  //   for (let i = this.front; (i + 1) % this.data.length !== this.tail; i++) {
+  //     console.log('log', this.data[(i + 1) % this.data.length]);
+  //   }
+  // }
 }
 
 module.exports = LoopQueue;
