@@ -19,3 +19,16 @@
 * **`dequeue`操作的时间复杂度降到了O(1)**
 * front === tail 队列为空
 * (tail+1) % size === tail 队列满
+
+循环队列的俩种遍历方式：
+
+```js
+
+```
+
+双端队列：可以在队列的俩端添加/删除元素
+
+* addFront
+* addLast
+* removeFirst
+* removeLast
