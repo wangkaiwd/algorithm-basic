@@ -44,4 +44,13 @@
 
 ### 链表和递归
 
-* 203: 有dummyHead vs 无dummyHead
+* 自己用代码创建通过数组创建链表的函数
+* 也可以自己创建`toString`函数
+* 203:
+  * 有dummyHead
+  * 无dummyHead
+  * 递归
+
+例子：
+
+* 递归实现数组求和
