@@ -14,11 +14,10 @@ const removeElements1 = function (head, val) {
   const dummy = new ListNode(null, head);
   let prev = dummy;
   // null->1->6->6
-  while (prev !== null) {
-    let cur = prev.next;
-    if (cur && (cur.val === val)) { // 将元素删除之后，需要继续判断下一个元素。如果也将prev后移，将会跳过对下一个元素的处理
-      prev.next = cur.next;
-      cur.next = null;
+  // 每次都处理prev.next即当前节点，最后一个节点会在prev为最后一节点的前一个节点时进行处理，所以不用担心漏掉
+  while (prev.next !== null) {
+    if (prev.next.val === val) {
+      prev.next = prev.next.next;
     } else {
       prev = prev.next;
     }
