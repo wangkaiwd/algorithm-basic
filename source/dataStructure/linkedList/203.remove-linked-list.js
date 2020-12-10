@@ -9,6 +9,10 @@
  * @param {number} val
  * @return {ListNode}
  */
+const head = {
+  val: 1,
+  next: { val: 6, next: { val: 6, next: null } }
+};
 const ListNode = require('./ListNode');
 // const removeElements1 = function (head, val) {
 //   const dummy = new ListNode(null, head);
@@ -25,36 +29,41 @@ const ListNode = require('./ListNode');
 //   return dummy.next;
 // };
 //
-// const head = {
-//   val: 1,
-//   next: { val: 6, next: { val: 6, next: null } }
-// };
+
 // console.log(removeElements1(head, 6));
 
-const head = {
-  val: 1,
-  next: { val: 6, next: { val: 6, next: null } }
-};
-
 // 没有虚拟头节点
-const removeElements2 = function (head, val) {
-  // 头节点可能是空的，那么调用next就会出错
-  // 有了虚拟头节点，头节点就不用单独处理了
+// const removeElements2 = function (head, val) {
+//   // 头节点可能是空的，那么调用next就会出错
+//   // 有了虚拟头节点，头节点就不用单独处理了
+//   if (head === null) {
+//     return null;
+//   }
+//   let prev = head;
+//   while (prev.next !== null) {
+//     if (prev.next.val === val) {
+//       prev.next = prev.next.next;
+//     } else {
+//       prev = prev.next;
+//     }
+//   }
+//   // 将头节点之后的元素都删除之后，再单独处理头节点
+//   if (head.val === val) {
+//     head = head.next;
+//   }
+//   return head;
+// };
+// console.log(removeElements2(head, 6));
+
+// 使用递归来实现：
+// 0 -> 移除所有目标元素后的链表
+// 1->6->6
+const removeElements3 = function (head, val) {
   if (head === null) {
     return null;
   }
-  let prev = head;
-  while (prev.next !== null) {
-    if (prev.next.val === val) {
-      prev.next = prev.next.next;
-    } else {
-      prev = prev.next;
-    }
-  }
-  // 将头节点之后的元素都删除之后，再单独处理头节点
-  if (head.val === val) {
-    head = head.next;
-  }
-  return head;
+  // 头节点之后的所有节点已经移除了目标元素，将头节点的next指向已经处理好的链表
+  head.next = removeElements3(head.next, val);
+  // 单独处理头节点
+  return head.val === val ? head = head.next : head;
 };
-console.log(removeElements2(head, 6));
