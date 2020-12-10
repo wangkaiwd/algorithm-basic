@@ -46,8 +46,8 @@ class LinkedList {
     this.add(this.size, e);
   }
 
-  addFirst () {
-
+  addFirst (e) {
+    this.add(0, e);
   }
 
   // 0 -> 1 -> 2 -> 3 -> null
@@ -73,11 +73,21 @@ class LinkedList {
   }
 
   set (index, e) {
-
+    let cur = this.dummyHead.next;
+    for (let i = 0; i < index; i++) {
+      cur = cur.next;
+    }
+    cur.node = e;
   }
 
-  get () {
-
+  // 0 -> 1 -> 2 -> 3 -> null
+  get (index) {
+    let cur = this.dummyHead.next;
+    // 最终遍历到index的前一个，所以需要从dummyHead.next开始遍历
+    for (let i = 0; i < index; i++) {
+      cur = cur.next;
+    }
+    return cur.node;
   }
 
   toString () {
@@ -91,6 +101,18 @@ class LinkedList {
     }
     str += null;
     console.log(str);
+  }
+
+  contain (e) {
+    // 0 -> 1 -> 2 -> 3 -> null
+    let prev = this.dummyHead;
+    for (let i = 0; i < this.size; i++) {
+      if (prev.node === e) {
+        return true;
+      }
+      prev = prev.next;
+    }
+    return false;
   }
 }
 
