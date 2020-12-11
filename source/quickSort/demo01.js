@@ -23,3 +23,6 @@ console.log(partition1(arr), arr);
 // 原地实现2：
 //  l 为参考元素的索引
 //  将原数组分为俩个区间：[l+1,j] < v, [j+1,i] > v
+function partition2 (arr, l, r) {
+
+}
