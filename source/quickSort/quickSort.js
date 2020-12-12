@@ -2,10 +2,26 @@
 //  想出递归的宏观语义，将递归调用仅仅当成另一个函数调用
 // 宏观语义
 
-const arr = [4, 3, 2, 5, 8, 7, 1];
+const { isSorted } = require('./sortHelper');
+const arr = [4, 3, 7, 1];
 
 function quickSort (arr) {
   sort(arr, 0, arr.length - 1);
+}
+
+function sort1 (arr, l, r, depth = 0) {
+  // 如果数组只有一个元素，不用进行排序
+  if (l >= r) return;
+  console.log('----'.repeat(depth + 1), 'before partition: ' + JSON.stringify(arr));
+  const p = partition(arr, l, r);
+  console.log('----'.repeat(depth + 1), 'after partition: ' + JSON.stringify(arr));
+  console.log('----'.repeat(depth + 1), 'after partition p: ' + p);
+  console.log('----'.repeat(depth + 1), 'left range: ', `${l} -> ${p}`);
+  sort1(arr, l, p, depth + 1);
+  console.log('----'.repeat(depth + 1), 'after left sort: ' + arr);
+  console.log('----'.repeat(depth + 1), 'right range: ', `${p + 1} -> ${r}`);
+  sort1(arr, p + 1, r, depth + 1);
+  console.log('----'.repeat(depth + 1), 'after right sort: ' + arr);
 }
 
 function sort (arr, l, r) {
@@ -40,4 +56,3 @@ function swap (arr, i, j) {
 }
 
 quickSort(arr);
-console.log('arr', arr);
