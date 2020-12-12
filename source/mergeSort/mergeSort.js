@@ -1,5 +1,5 @@
 // 将数组一分为二，分别对每一半进行处理
-const mergeSort = (arr, l, r) => {
+const mergeSort = (arr, l = 0, r = arr.length - 1) => {
   if (l >= r) {return;}
   const mid = Math.floor((l + r) / 2);
   mergeSort(arr, l, mid);
@@ -36,5 +36,4 @@ const merge = (arr, l, mid, r) => {
 };
 const arr = [1, 2, 5, 6, 3, 4, 8, 10];
 
-mergeSort(arr, 0, arr.length - 1);
-console.log(arr);
+module.exports = mergeSort;
