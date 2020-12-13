@@ -18,10 +18,10 @@ function partition (arr, l, r) {
   swap(arr, l, random);
   let i = l + 1, j = r;
   while (true) {
-    while (arr[i] < arr[l]) {
+    while (i <= j && arr[i] < arr[l]) {
       i++;
     }
-    while (arr[j] > arr[l]) {
+    while (i <= j && arr[j] > arr[l]) {
       j--;
     }
     // i 超过j ，说明已经将所有元素划分完成
@@ -47,5 +47,3 @@ function quickSort2Way (arr) {
 }
 
 module.exports = quickSort2Way;
-const arr = [4, 3, 7, 1, 8, 0, 5];
-quickSort2Way(arr);
