@@ -47,9 +47,6 @@
 
 ### 作业
 
-* 举一个简单的例子进行理解
-* 通过`log`输出内容
-* insertionSort 优化 quickSort
 * select k: 给出一个无序数组，找出数组中第k小的元素
 * leetcode:
   * 75.颜色分类
