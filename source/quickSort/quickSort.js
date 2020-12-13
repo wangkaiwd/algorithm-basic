@@ -2,12 +2,13 @@
 //  想出递归的宏观语义，将递归调用仅仅当成另一个函数调用
 // 宏观语义
 
-const arr = [4, 3, 7, 1];
+const arr = [4, 3, 7, 1, 8, 0, 5];
 
 function quickSort (arr) {
   sort(arr, 0, arr.length - 1);
 }
 
+// 执行逻辑图： https://excalidraw.com/#json=5677728049135616,c9oDsORbtCr-cg0VRztOAA
 function sortLog (arr, l, r, depth = 0) {
   // 如果数组只有一个元素，不用进行排序
   if (l >= r) return;
@@ -25,6 +26,7 @@ function sortLog (arr, l, r, depth = 0) {
 
 function sort (arr, l, r) {
   // 如果数组只有一个元素，不用进行排序
+  // l 为什么要 > r，因为当p返回数组的最后一项时，l = p+1 > r
   if (l >= r) return;
   const p = partition(arr, l, r);
   sort(arr, l, p);
