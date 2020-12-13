@@ -1,5 +1,6 @@
 ## 归并排序
 
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201213223803.png)
 由于在`merge`过程中新创建了一个数组来存储原数组的内容，所以归并排序并不是一个原地排序算法
 
 * sort
