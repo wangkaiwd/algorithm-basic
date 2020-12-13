@@ -32,6 +32,9 @@ function sort (arr, l, r) {
 }
 
 function partition (arr, l, r) {
+  const random = getRandomRange(l, r);
+  // 将范围开始元素与随机元素进行交换，保证第一个元素仍然为参考元素
+  swap(arr, l, random);
   let j = l;
   // 遍历数组中的每一项
   // 起始值为l+1,l的位置为参考元素
@@ -52,6 +55,11 @@ function swap (arr, i, j) {
   const t = arr[i];
   arr[i] = arr[j];
   arr[j] = t;
+}
+
+function getRandomRange (l, r) {
+  const random = Math.random() * (r - l) + l;
+  return Math.round(random);
 }
 
 module.exports = quickSort;
