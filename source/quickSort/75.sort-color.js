@@ -1,41 +1,29 @@
-const getRandomRange = (l, r) => {
-  return Math.round(Math.random() * (r - l)) + l;
-};
+// solution: https://leetcode-cn.com/problems/sort-colors/solution/kuai-su-pai-xu-partition-guo-cheng-she-ji-xun-huan/
 const swap = (arr, i, j) => {
   const temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
 };
-const sort = (arr, l, r) => {
-  if (l >= r) return;
-  const [lt, gt] = partition(arr, l, r);
-  // 等于参考元素的不做处理
-  sort(arr, l, lt);
-  sort(arr, gt, r);
-};
 
 // [l+1, lt] < v, [lt+1, gt-1] = v, [gt, r] > v
 const partition = (arr, l, r) => {
-  const random = getRandomRange(l, r);
-  swap(arr, l, random);
-  let lt = l, i = l + 1, gt = r + 1;
+  let lt = -1, i = l, gt = r + 1;
   while (i < gt) {
-    if (arr[i] < arr[l]) {
+    if (arr[i] === 0) {
       lt++;
       swap(arr, i, lt);
       i++;
-    } else if (arr[i] > arr[l]) {
+    } else if (arr[i] === 1) {
+      i++;
+    } else {
       gt--;
       swap(arr, i, gt);
-    } else { // 和参考元素相等
-      i++;
     }
   }
-  swap(arr, l, lt);
-  return [lt, gt];
 };
+// 由于题目中只有0,1,2，所以根据三路快速排序中的partition之后，就直接成为了一个排序好的内容，也不需要递归
 const sortColors = (nums) => {
-  sort(nums, 0, nums.length - 1);
+  partition(nums, 0, nums.length - 1);
 };
 
 const arr = [2, 0, 2, 1, 1, 0];
