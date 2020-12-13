@@ -1,6 +1,7 @@
 ## 快速排序
 
 > 可以对数组先进行区间划分，然后再实现
+
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201213223440.png)
 
 * partition: 随便给定数组中的一个元素，以这个元素为分界点，左边为小于该元素的内容，右边为大于该元素的内容，最后返回该元素的索引
