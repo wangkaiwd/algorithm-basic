@@ -1,18 +1,35 @@
+const { isSorted } = require('./sortHelper');
+
 function swap (arr, i, j) {
   const t = arr[i];
   arr[i] = arr[j];
   arr[j] = t;
 }
 
-// 目标： [l+1, j] < arr[l] , [j+1,i] > arr[l] , swap(arr,l,j) return j
+function getRandomRange (l, r) {
+  const random = Math.random() * (r - l) + l;
+  return Math.round(random);
+}
+
+// 目标：[l+1, i-1] <= v, [j+1,r] >= v
+// 双路快速排序
 function partition (arr, l, r) {
-  let j = l;
-  for (let i = 0; i <= r; i++) {
-    if (arr[i] < arr[l]) {
-      // 要先j++，此时会有俩种情况，arr[j] > arr[l] 或者 i 和 j 位置重合，原地交换，相当于什么都没发生
-      j++;
-      swap(arr, i, j);
+  const random = getRandomRange(l, r);
+  swap(arr, l, random);
+  let i = l + 1, j = r;
+  while (true) {
+    while (arr[i] < arr[l]) {
+      i++;
     }
+    while (arr[j] > arr[l]) {
+      j--;
+    }
+    // i 超过j ，说明已经将所有元素划分完成
+    // i = j 时，说明该元素 = v, 所以不处理也可以
+    if (i >= j) {break;}
+    swap(arr, i, j);
+    i++;
+    j--;
   }
   swap(arr, l, j);
   return j;
@@ -30,3 +47,5 @@ function quickSort2Way (arr) {
 }
 
 module.exports = quickSort2Way;
+const arr = [4, 3, 7, 1, 8, 0, 5];
+quickSort2Way(arr);
