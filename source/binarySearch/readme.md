@@ -29,7 +29,7 @@
 ### 练习
 
 * 非递归实现`select K`
-* 修改`select k`的循环不变量再次进行实现
+* 修改`select k`的循环不变量再次进行实现: 代码中的`i<=j`如何理解？
 * 修改循环不变量实现归并排序：
   * 调整merge的循环不变量: arr[l,mid) -> arr[mid, r)
   * 调整mergeSort的循环不变量: arr[l,r)
