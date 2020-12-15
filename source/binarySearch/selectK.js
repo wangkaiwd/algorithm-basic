@@ -11,7 +11,6 @@ function selectK (arr, k, l = 0, r = arr.length - 1) {
       r = pivot - 1;
     }
   }
-  return false;
 }
 
 function swap (arr, i, j) {
@@ -26,15 +25,19 @@ function partition (arr, l, r) {
   // 将内容分为比pivot小，pivot，比pivot大的部分，最终会返回pivot的索引
   let i = l + 1, j = r;
   while (true) {
-    // 这里为什么是i <= j ? 逻辑该如何思考？
-    while ((i <= j) && (arr[i] < arr[l])) { // [l+1, i] <= v, [g+1, r] >= v
+    // 这里为什么包含i=j ? 逻辑该如何思考？
+    // i < j , 此时有俩种情况，可能它们之间没有元素，还有可能他们之间还有一个元素
+    // i < j && arr[i] < arr[l]
+    while (i < j && arr[i] < arr[l]) { // [l+1, i] <= v, [j+1, r] >= v
       i++;
     }
-    while ((i <= j) && (arr[j] > arr[l])) {
+    while (i < j && arr[j] > arr[l]) {
       j--;
     }
+    // 大于等于的话直接break;
     if (i >= j) {break;}
     // 当arr[i] >= arr[l] 并且 arr[j] <= arr[l]的时候，将i,l对应的值进行交换，那么对应的大于等于以及小于等于的值都到了对应的位置
+    // 俩个值在交换之后，会分别进行i++和j--，此时会导致i,j会直接超出对应的范围
     swap(arr, i, j);
     i++;
     j--;
@@ -43,4 +46,5 @@ function partition (arr, l, r) {
   return j;
 }
 
-console.log(selectK([3, 2, 1, 5, 6, 4], 2));
+console.log(selectK([3, 2, 1, 5, 6, 4], 7));
+// [5,2,1,3,6,7]
