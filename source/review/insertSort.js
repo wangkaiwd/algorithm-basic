@@ -17,6 +17,7 @@ const insertSort = (arr) => {
     }
   }
 };
+// 数组的插入和删除操作
 const insertSort2 = (arr) => {
   for (let i = 0; i < arr.length; i++) {
     const temp = arr[i];
@@ -24,10 +25,13 @@ const insertSort2 = (arr) => {
       if (temp < arr[j - 1]) {
         arr[j] = arr[j - 1];
       } else {
-        arr[j] = temp;
         break;
       }
     }
+    // 不满足条件有2种情况：
+    //  1. arr[j-1] > temp
+    //  2. j = 1, 此时在执行完循环后还会进行j--，就会j会变成0。由于在后移过程中将前一个的值都赋值给了后一个，所以这个时候，arr[1] = arr[0]。此时说明temp在前i项中最小，赋值给arr[0]
+    arr[j] = temp;
   }
 };
 
