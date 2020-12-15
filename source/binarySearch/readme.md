@@ -20,11 +20,32 @@
 
 ### 修改循环不变量
 
-### 二分查找法变量
+### 二分查找法变种
 
 * upper
   * 查找大于target的最小值：如，查找大于60的最小值
+
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201215202618.png)
+
 * cell
+
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201215203127.png)
+
+* lower_ceil: >=target的最小索引
+
+* lower: 小于target的最大值
+  * 会出现搜索空间没有变化的情况，middle计算时上下取整会出问题(例：[0,1]取中位数)
+
+* lower_floor: 存在元素，返回最小索引。不存在元素，返回lower
+
+* upper_floor: 如果数组中存在元素，返回最大索引。不存在元素，返回lower
+
+### 二分查找模板
+
+总结相应的思路
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201215205932.png)
+
+* 用>=target的最小值实现二分查找
 
 ### 练习
 
@@ -33,3 +54,7 @@
 * 修改循环不变量实现归并排序：
   * 调整merge的循环不变量: arr[l,mid) -> arr[mid, r)
   * 调整mergeSort的循环不变量: arr[l,r)
+
+### leetcode
+
+* 875.爱吃香蕉的珂珂
