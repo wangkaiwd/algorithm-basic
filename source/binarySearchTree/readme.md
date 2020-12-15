@@ -32,6 +32,11 @@
   * inOrder: 中序遍历(遍历结果是顺序的)
   * postOrder: 后续遍历
 * delete
+  * 找到最小值和最大值
+  * 删除最小值和最大值
+  * 测试 -> 将每次删除的值到放到数组中，知道树中没有元素，此时数组为排序好的数组
+  * 删除任意节点(左右都有孩子的节点)
+* toString
 
 遍历；自己画图进行分析
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201215232510.png)
@@ -48,3 +53,17 @@
   * 可以更快的找到对应的元素
     * 深度优先遍历会一直到叶子节点才会获取节点的值
     * 广度优先遍历会直接按层进行遍历
+
+删除:
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201216000852.png)
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201216001529.png)
+
+### 二分搜索树的相关问题
+
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201216002009.png)
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201216002131.png)
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201216002202.png)
+
+### leetcode
+
+* 翻转二叉树
