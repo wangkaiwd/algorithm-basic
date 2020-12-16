@@ -55,6 +55,7 @@ class BinarySearchTree {
   // addError (e, node = this.root) {
   //   if (node == null) {
   //     // 这会使node指向一个全新的引用，在第一次执行时node指向的是this.root对应的堆内存,此时指向了一个新开辟的堆内存
+  //     // 即使不是为根节点添加，也只是将node修改为另一个值，与原来的节点没有任何关系
   //     node = new Node(e);
   //     return;
   //   }
@@ -64,19 +65,15 @@ class BinarySearchTree {
   //     this.add(e, node.right);
   //   }
   // }
+  // reference relation: https://excalidraw.com/#json=4848003718316032,B1qZEBlNuNdK9VJMRgUX7g
+  add (e) {
+    // 从根节点开始添加
+    // 宏观语义添加新的根节点并将新根节点返回
+    // 复杂数据类型就会发生引用
+    this.root = this.innerAdd(e, this.root);
+  }
 
-  // const root = {
-  //   element: 10,
-  //   left: { element: 9, left: null, right: null },
-  //   right: { element: 11, left: null, right: null }
-  // };
-  // add(8)
-  // 10.left = this.add(8,10.left)
-  //    9.left = this.add(8, 9.left)  9.left = {element: 8, null, null}
-  //       9.left == null, return new Node(e)
-  //    return 9
-  // return 10
-  add (e, node = this.root) {
+  innerAdd (e, node) {
     if (node == null) {
       this.size++;
       return new Node(e);
@@ -88,7 +85,8 @@ class BinarySearchTree {
       node.right = this.add(e, node.right);
     }
     // 为什么要返回node?
-    // add 就是要返回根节点
+    // 当根节点有值的时候，即使不返回node也没有问题，因为node本质指向的是一片引用，而我们改的是node.left和node.right，此时node指向的堆内存地址并没有发生变化
+    // 但是当根节点为空时，此时直接return new Node(e)会创建一个新的内存空间，需要赋值给root
     return node;
   }
 
