@@ -21,6 +21,7 @@
 * 存储的元素必须有可比较性
 
 操作：二分搜索树不包含重复元素，实现时以递归为主
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201216205142.png)
 
 * getSize
 * isEmpty
