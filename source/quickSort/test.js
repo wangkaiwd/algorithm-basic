@@ -1,4 +1,4 @@
-const { genRandomArray, sortTest, genOrderedArray } = require('./sortHelper');
+const { genRandomArray, sortTest, genOrderedArray } = require('../shared/sortHelper');
 
 function test () {
   const n = 1000000;

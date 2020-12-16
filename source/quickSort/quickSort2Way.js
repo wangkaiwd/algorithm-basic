@@ -1,4 +1,4 @@
-const { isSorted } = require('./sortHelper');
+const { isSorted } = require('../shared/sortHelper');
 
 function swap (arr, i, j) {
   const t = arr[i];

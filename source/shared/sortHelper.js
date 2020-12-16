@@ -1,4 +1,4 @@
-const quickSort = require('./quickSort');
+const quickSort = require('../quickSort/quickSort');
 const mergeSort = require('../mergeSort/mergeSort');
 
 function isSorted (arr) {

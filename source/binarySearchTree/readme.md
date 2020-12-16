@@ -6,14 +6,14 @@
   ```js
   class Node {
     element;
-    left; // 做孩子
-    right; // 有孩子
+    left; // 左孩子
+    right; // 右孩子
   }
   ```
 * 二叉树具有天然递归结构
 * 每个节点的左子树和右子树都是二叉树
-* 二叉树不一定时满的
-* 一个节点也是二叉树
+* 二叉树不一定是满的
+* **一个节点也是二叉树**(左右子树都为null)
 
 二分搜索树：
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201215222949.png)
