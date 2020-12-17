@@ -20,8 +20,17 @@ class BinarySearchTree {
     return this.size === 0;
   }
 
-  contains (e) {
-
+  contains (e, node = this.root) {
+    if (node == null) {
+      return false;
+    }
+    if (e === node.element) {
+      return true;
+    } else if (e < node.element) {
+      return this.contains(e, node.left);
+    } else {
+      return this.contains(e, node.right);
+    }
   }
 
   // 要判断插入的值，如果值小于当前遍历的节点，并且当前节点的左子树为空的话，则插入到当前节点的左子树
@@ -80,9 +89,9 @@ class BinarySearchTree {
     }
     if (e < node.element) {
       // 空的话会创建新的，如果不是空会原样返回
-      node.left = this.add(e, node.left);
+      node.left = this.innerAdd(e, node.left);
     } else if (e > node.element) {
-      node.right = this.add(e, node.right);
+      node.right = this.innerAdd(e, node.right);
     }
     // 为什么要返回node?
     // 当根节点有值的时候，即使不返回node也没有问题，因为node本质指向的是一片引用，而我们改的是node.left和node.right，此时node指向的堆内存地址并没有发生变化
@@ -91,22 +100,43 @@ class BinarySearchTree {
   }
 
   // 前序遍历
-  preOrder () {
-
+  // 遍历的时候每一个节点都会经过三次：
+  //  1. 首次到它的时候
+  //  2. 遍历完left回来的时候
+  //  3. 遍历完right回来的时候
+  preOrder (node = this.root) {
+    if (node) {
+      console.log(node.element);
+      this.preOrder(node.left);
+      this.preOrder(node.right);
+    }
   }
 
   // 中序遍历
-  inOrder () {
-
+  inOrder (node = this.root) {
+    if (node) {
+      this.inOrder(node.left);
+      console.log(node.element);
+      this.inOrder(node.right);
+    }
   }
 
   // 后续遍历
-  postOrder () {
-
+  postOrder (node = this.root) {
+    if (node) {
+      this.postOrder(node.left);
+      this.postOrder(node.right);
+      console.log(node.element);
+    }
   }
 
-  toString () {
-
+  // depth
+  toString (node = this.root, depth = 0, direction = 'root') {
+    if (node) {
+      console.log('--'.repeat(depth), `${node.element} - (${direction})`);
+      this.toString(node.left, depth + 1, 'left');
+      this.toString(node.right, depth + 1, 'right');
+    }
   }
 }
 
