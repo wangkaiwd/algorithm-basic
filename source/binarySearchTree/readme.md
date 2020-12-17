@@ -27,7 +27,7 @@
 * isEmpty
 * add：又返回值和没有返回值的实现。链表中如何递归添加元素？
 * contains
-* traverse:
+* [traverse](https://excalidraw.com/#json=5167602099814400,EhJmnttLFuEK4b172K08jA)
   * 顺序其实为打印输出的位置，可以仔细思考对应的输出原因
   * preOrder:前序遍历(最常用)
   * inOrder: 中序遍历(遍历结果是顺序的)
