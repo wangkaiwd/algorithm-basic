@@ -164,6 +164,54 @@ class BinarySearchTree {
     }
   }
 
+  minimum (node = this.root) {
+    // 每次都会处理node.left为null的情况，所以node === null只可能是根节点为null
+    if (node == null) {
+      throw Error('Tree is empty!');
+    }
+    if (node.left == null) {
+      return node.element;
+    }
+    return this.minimum(node.left);
+  }
+
+  maximum (node = this.root) {
+  }
+
+  // 返回删除的元素
+  removeMin () {
+    const min = this.minimum();
+    // 递归遍历，直到找到最小值节点
+    // 如果该节点没有右子树，直接进行删除，如果该节点有右子树，删除该节点，将该节点的右子树放到该节点的位置
+    this.removeMinInner(this.root);
+    return min;
+  }
+
+  // 返回删除当前节点删除最小值后的新的当前节点，需要使用新的当前节点来更新旧的当前节点
+  removeMinInner (node) {
+    if (node.left == null) { // 说明node是最小值节点
+      if (node.right) {
+        // node = node.right; // 这样写不会生效，只是将node指向了一个新的堆内存
+        const rightNode = node.right;
+        // 删除node节点
+        node = null;
+        return rightNode;
+      }
+      // 没有右子树，直接将该节点删除
+      return null;
+    }
+    // 这里由于对象引用，其实已经将root进行了修改，不返回node也可以。
+    // 但是由于root可能是null，所以要将node返回。这里其实不返回也行，但是为了满足递归的宏观语义，返回是一个正确的理解
+    node.left = this.removeMinInner(node.left);
+    // 需要将最新值赋值给旧的节点
+    return node;
+  }
+
+  // 返回删除的元素
+  removeMax () {
+
+  }
+
   // depth
   toString (node = this.root, depth = 0, direction = 'root') {
     if (node) {
