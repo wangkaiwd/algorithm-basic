@@ -12,6 +12,8 @@ function test () {
   // console.log('postOrder');
   // tree.postOrder();
   tree.preOrderNonRecur();
+  // 一层一层来遍历
+  tree.broadFirstTraverse();
 }
 
 test();

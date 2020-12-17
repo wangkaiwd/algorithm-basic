@@ -47,11 +47,12 @@
 * 每个节点都会被经过三次
 * 前序遍历：非递归实现(利用栈)
   ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201217213820.png)
-  
+
 深度优先遍历和广度优先遍历(结合`Node.js`中对应的代码逻辑再次进行理解)：
 
 * 深度优先(前中后序遍历)
 * 广度优先遍历(层序遍历): 非递归 + 队列
+  ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201217215608.png)
   * 可以更快的找到对应的元素
     * 深度优先遍历会一直到叶子节点才会获取节点的值
     * 广度优先遍历会直接按层进行遍历

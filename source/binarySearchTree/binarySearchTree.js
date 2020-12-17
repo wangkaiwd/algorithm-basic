@@ -122,14 +122,14 @@ class BinarySearchTree {
     const stack = [this.root];
     // 当栈为空的时候说明处理完了所有内容
     while (stack.length !== 0) {
-      const front = stack.pop();
-      console.log('front', front.element);
+      const popEntry = stack.pop();
+      console.log('popEntry', popEntry.element);
       // 由于要先处理左子树，所以要先入右子树，然后再入左子树
-      if (front.right) {
-        stack.push(front.right);
+      if (popEntry.right) {
+        stack.push(popEntry.right);
       }
-      if (front.left) {
-        stack.push(front.left);
+      if (popEntry.left) {
+        stack.push(popEntry.left);
       }
     }
   }
@@ -149,6 +149,18 @@ class BinarySearchTree {
       this.postOrder(node.left);
       this.postOrder(node.right);
       console.log(node.element);
+    }
+  }
+
+  // 队列： 先入先出
+  // 广度优先遍历
+  broadFirstTraverse () {
+    const queue = [this.root];
+    while (queue.length !== 0) {
+      const shiftEntry = queue.shift();
+      console.log(shiftEntry.element);
+      if (shiftEntry.left) {queue.push(shiftEntry.left);}
+      if (shiftEntry.left) {queue.push(shiftEntry.right);}
     }
   }
 
