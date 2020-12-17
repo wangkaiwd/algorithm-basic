@@ -242,7 +242,10 @@ class BinarySearchTree {
   // 如果要删除的节点既有左子树，还有右子树
   //  找到该节点的后继来替代该元素：即比该节点大的最小节点，它在该节点的右子树的左子树中的最小值
   remove (e) {
-    this.root = this.removeInner(this.root, e);
+    const result = this.removeInner(this.root, e);
+    if (result) {
+      this.tree = result;
+    }
   }
 
   removeInner (node, e) {
@@ -250,6 +253,7 @@ class BinarySearchTree {
       throw Error('Tree is empty!');
     }
     if (e === node.element) {
+      // 左子树和右子树都存在
       if (node.left && node.right) {
         const min = this.minimum(node.right);
         node.right = this.removeMinInner(node.right);
@@ -259,16 +263,19 @@ class BinarySearchTree {
         return newNode;
       }
       this.size--;
+      // 左子树存在
       if (node.left) {
         const leftNode = node.left;
         node = null;
         return leftNode;
       }
+      // 右子树存在
       if (node.right) {
         const rightNode = node.right;
         node = null;
         return rightNode;
       }
+      // 左右子树都不存在直接删除
       return null;
     } else if (e < node.element) {
       if (node.left) {
@@ -278,6 +285,7 @@ class BinarySearchTree {
           return node;
         }
       }
+      // 没有要删除的元素
     } else {
       if (node.right) {
         const result = this.removeInner(node.right, e);
@@ -286,6 +294,7 @@ class BinarySearchTree {
           return node;
         }
       }
+      // 没有要删除的元素
     }
   }
 

@@ -22,7 +22,7 @@ function testAdd () {
 function testRemove () {
   const arr = [28, 16, 22, 30, 29, 42];
   arr.forEach(item => tree.add(item));
-  tree.remove(30);
+  console.log(tree.remove(32));
   console.log(JSON.stringify(tree, null, 2));
 }
 
