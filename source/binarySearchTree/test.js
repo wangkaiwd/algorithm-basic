@@ -19,6 +19,13 @@ function testAdd () {
   arr.forEach(item => tree.add(item));
 }
 
+function testRemove () {
+  const arr = [28, 16, 22, 30, 29, 42];
+  arr.forEach(item => tree.add(item));
+  tree.remove(30);
+  console.log(JSON.stringify(tree, null, 2));
+}
+
 function test () {
   // testAdd();
   // tree.toString();
@@ -31,7 +38,8 @@ function test () {
   // tree.preOrderNonRecur();
   // 一层一层来遍历
   // tree.broadFirstTraverse();
-  testMinAndMax();
+  // testMinAndMax();
+  testRemove();
 }
 
 test();

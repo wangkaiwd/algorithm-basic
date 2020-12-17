@@ -239,6 +239,56 @@ class BinarySearchTree {
     return node;
   }
 
+  // 如果要删除的节点既有左子树，还有右子树
+  //  找到该节点的后继来替代该元素：即比该节点大的最小节点，它在该节点的右子树的左子树中的最小值
+  remove (e) {
+    this.root = this.removeInner(this.root, e);
+  }
+
+  removeInner (node, e) {
+    if (node == null) {
+      throw Error('Tree is empty!');
+    }
+    if (e === node.element) {
+      if (node.left && node.right) {
+        const min = this.minimum(node.right);
+        node.right = this.removeMinInner(node.right);
+        const newNode = new Node(min, node.left, node.right);
+        // 释放当前节点的内存
+        node = null;
+        return newNode;
+      }
+      this.size--;
+      if (node.left) {
+        const leftNode = node.left;
+        node = null;
+        return leftNode;
+      }
+      if (node.right) {
+        const rightNode = node.right;
+        node = null;
+        return rightNode;
+      }
+      return null;
+    } else if (e < node.element) {
+      if (node.left) {
+        const result = this.removeInner(node.left, e);
+        if (result !== undefined) {
+          node.left = result;
+          return node;
+        }
+      }
+    } else {
+      if (node.right) {
+        const result = this.removeInner(node.right, e);
+        if (result !== undefined) {
+          node.right = result;
+          return node;
+        }
+      }
+    }
+  }
+
   // depth
   toString (node = this.root, depth = 0, direction = 'root') {
     if (node) {
