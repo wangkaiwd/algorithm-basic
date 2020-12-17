@@ -68,7 +68,11 @@ class BinarySearchTree {
   // reference relation: https://excalidraw.com/#json=4848003718316032,B1qZEBlNuNdK9VJMRgUX7g
   add (e) {
     // 从根节点开始添加
-    // 宏观语义添加新的根节点并将新根节点返回
+    // 宏观语义：
+    // 为当前节点添加新节点，并将添加新节点后的该节点返回
+
+    // 由于复杂数据类型的引用关系，如果根不为null，只修改添加的子节点也会导致这个树的变化，因为复杂数据类型会先根据地址来找到对应的堆内存，然后从堆内存中找出对应的值，此时该值已经发生了变化
+
     // 复杂数据类型就会发生引用
     this.root = this.innerAdd(e, this.root);
   }
