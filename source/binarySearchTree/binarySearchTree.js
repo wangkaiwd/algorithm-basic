@@ -176,6 +176,13 @@ class BinarySearchTree {
   }
 
   maximum (node = this.root) {
+    if (node == null) {
+      throw Error('Tree is empty!');
+    }
+    if (node.right == null) {
+      return node.element;
+    }
+    return this.minimum(node.right);
   }
 
   // 返回删除的元素
@@ -183,13 +190,14 @@ class BinarySearchTree {
     const min = this.minimum();
     // 递归遍历，直到找到最小值节点
     // 如果该节点没有右子树，直接进行删除，如果该节点有右子树，删除该节点，将该节点的右子树放到该节点的位置
-    this.removeMinInner(this.root);
+    this.root = this.removeMinInner(this.root);
     return min;
   }
 
   // 返回删除当前节点删除最小值后的新的当前节点，需要使用新的当前节点来更新旧的当前节点
   removeMinInner (node) {
     if (node.left == null) { // 说明node是最小值节点
+      this.size--;
       if (node.right) {
         // node = node.right; // 这样写不会生效，只是将node指向了一个新的堆内存
         const rightNode = node.right;
@@ -209,7 +217,26 @@ class BinarySearchTree {
 
   // 返回删除的元素
   removeMax () {
+    const max = this.maximum(this.root);
+    this.root = this.removeMaxInner(this.root);
+    return max;
+  }
 
+  removeMaxInner (node) {
+    if (node.right == null) {
+      this.size--;
+      if (node.left) {
+        const leftNode = node.left;
+        // 释放内存,因为此时node还指向上一节点的left所对应的堆内存
+        node = null;
+        // 返回新的当前节点：当前节点的左节点
+        return leftNode;
+      }
+      return null;
+    }
+    node.right = this.removeMaxInner(node.right);
+    // 将当前节点返回
+    return node;
   }
 
   // depth

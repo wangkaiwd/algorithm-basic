@@ -1,8 +1,17 @@
 const binarySearchTree = require('./binarySearchTree');
+const { genRandomArray, isSorted } = require('../shared/sortHelper');
 const tree = new binarySearchTree();
 
 function testMinAndMax () {
-  console.log(tree.minimum());
+  const arr = genRandomArray(1000);
+  arr.forEach(item => tree.add(item));
+  const result = [];
+  while (!tree.isEmpty()) {
+    const min = tree.removeMin();
+    result.push(min);
+  }
+  console.log('result', result);
+  console.log(isSorted(result));
 }
 
 function testAdd () {
@@ -11,7 +20,7 @@ function testAdd () {
 }
 
 function test () {
-  testAdd();
+  // testAdd();
   // tree.toString();
   // console.log('preOrder');
   // tree.preOrder();
