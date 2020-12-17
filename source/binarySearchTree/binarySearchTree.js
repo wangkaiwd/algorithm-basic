@@ -123,7 +123,7 @@ class BinarySearchTree {
     // 当栈为空的时候说明处理完了所有内容
     while (stack.length !== 0) {
       const popEntry = stack.pop();
-      console.log('popEntry', popEntry.element);
+      console.log(popEntry.element);
       // 由于要先处理左子树，所以要先入右子树，然后再入左子树
       if (popEntry.right) {
         stack.push(popEntry.right);
