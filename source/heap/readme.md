@@ -33,4 +33,23 @@
 * parent
 * leftChild
 * rightChild
+* add: Sift Up，添加元素要上浮
+* extractMax: Sift Down
+* heapify
+* replace: 取出最大元素后，放入一个新元素
+  * 先extractMax，再add, 俩次O(logn)的操作
+  * 直接将堆顶元素替换为新元素以后进行Sift Down, 一次O(logn)的操作
+* heapify: 将任意数组整理成堆的形状
+  ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201221225054.png)
+  * 最后一个非叶子节点的索引
+  * 将n个元素逐个插入到一个空堆中，算法复杂度是O(nlogn)
+  * heapify的过程，算法复杂度为O(n)
+    ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201221230025.png)
 
+### 堆排序
+
+heapSort:
+
+* 每次都执行extractMax,最终会得到一个排序好数组
+* 测试时间复杂度
+  * time complexity: O(nlogn)
