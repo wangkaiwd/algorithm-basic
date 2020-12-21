@@ -112,6 +112,10 @@ class BinarySearchTree {
     }
   }
 
+  preOrderNonRecur () {
+
+  }
+
   // 中序遍历
   inOrder (node = this.root) {
     if (node) {
