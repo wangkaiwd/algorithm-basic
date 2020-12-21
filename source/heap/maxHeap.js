@@ -40,6 +40,21 @@ class MaxHeap {
     this.siftUp(this.data.length - 1);
   }
 
+  // 提取堆中的最大值，即根节点
+  //  1. 用堆中最后一个子节点替换根节点的位置
+  //  2. 将根节点进行下沉操作
+  extractMax () {
+    if (this.data.length === 0) {
+      throw Error('Heap is empty!');
+    }
+    const len = this.data.length;
+    const max = this.data[0];
+    this.data[0] = this.data[len - 1];
+    this.data.length--;
+    this.siftDown(0);
+    return max;
+  }
+
   swap (i, j) {
     const temp = this.data[i];
     this.data[i] = this.data[j];
@@ -52,6 +67,25 @@ class MaxHeap {
       const parentK = this.parent(k);
       this.swap(k, parentK);
       k = parentK;
+    }
+  }
+
+  siftDown (k) {
+    const e = this.data[k];
+    while (this.data[this.leftChild(k)]) {
+      const leftK = this.leftChild(k), leftVal = this.data[leftK];
+      const rightK = this.rightChild(k), rightVal = this.data[leftVal];
+      // 当前节点大于等于左右节点时，结束循环
+      if (e >= leftVal && e >= rightVal) {
+        break;
+      }
+      if (rightVal >= leftVal) {
+        this.swap(k, rightK);
+        k = rightK;
+      } else {
+        this.swap(k, leftK);
+        k = leftK;
+      }
     }
   }
 }

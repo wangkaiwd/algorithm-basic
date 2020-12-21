@@ -7,7 +7,6 @@ function test () {
   for (let i = 0; i < 8; i++) {
     maxHeap.add(arr[i]);
   }
-  console.log('maxHeap', maxHeap);
 }
 
 test();
