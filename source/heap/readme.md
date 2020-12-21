@@ -50,6 +50,13 @@
 
 heapSort:
 
-* 每次都执行extractMax,最终会得到一个排序好数组
+* 每次都执行extractMax,最终会得到一个排序好的数组
 * 测试时间复杂度
   * time complexity: O(nlogn)
+* 优化堆排序：
+  * 原地堆排序
+    ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201221231626.png)
+
+### 练习
+
+* 实现最小堆
