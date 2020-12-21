@@ -59,18 +59,16 @@ const routes = [
 ];
 const auths = { '/page2-1-2': false, '/page1-1-1': false, '/login': false };
 
-const keepHasAuthRoutes = (routes, auths) => {
-  return routes.filter(route => {
+// 替换所有元素中的path字段为value
+const replaceFields = (routes) => { // 用想要的字段替换当前传入的节点，并将替换后新的节点返回
+  return routes.map(route => {
+    route.raw = route;
+    route.value = route.path;
+    delete route.path;
     if (route.children) {
-      route.children = keepHasAuthRoutes(route.children, auths);
+      route.children = replaceFields(route.children);
     }
-    const path = route.path;
-    if (!(path in auths)) {
-      return true;
-    } else {
-      return auths[path];
-    }
+    return route;
   });
 };
-const newRoutes = keepHasAuthRoutes(routes, auths);
-console.log('newRoutes', JSON.stringify(newRoutes, null, 2));
+const newRoutes = replaceFields(routes);
