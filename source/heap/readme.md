@@ -18,11 +18,11 @@
 
 二叉堆：
 
-* 完全二叉树： 从做到右被填满，如果有一个节点只有右子树而没有左子树，那么该节点并不是完全二叉树
-* 最大堆：堆中每个节点的值总是不大于其父节点的值。(根节点的值最大)
+* 完全二叉树： 从左到右被填满，如果中间有空缺的话，那么该节点并不是完全二叉树
+* 最大堆：堆中每个节点的值总是不大于其父节点的值。(根节点的值最大) 最小堆同理
   ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201221205852.png)
   ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201221210138.png)
-* 使用数组的方式表示最大堆
+* 使用数组的方式表示二叉堆
   ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201221211048.png)
   ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201221212044.png)
 
