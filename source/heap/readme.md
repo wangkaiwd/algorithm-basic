@@ -34,6 +34,7 @@
 * leftChild
 * rightChild
 * add: Sift Up，添加元素要上浮
+  ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201222002714.png)
 * extractMax: Sift Down
 * heapify
 * replace: 取出最大元素后，放入一个新元素

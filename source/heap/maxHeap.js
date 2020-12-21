@@ -33,8 +33,27 @@ class MaxHeap {
     return 2 * k + 2;
   }
 
-  add () {
-
+  // 在数组末尾添加元素()，然后将其进行上浮
+  // 上浮：判断其父节点是否 >= 该节点的值，如果否，进行位置交换；如果是，操作完成
+  add (e) {
+    this.data.push(e);
+    this.siftUp(this.data.length - 1);
   }
 
+  swap (i, j) {
+    const temp = this.data[i];
+    this.data[i] = this.data[j];
+    this.data[j] = temp;
+  }
+
+  siftUp (k) {
+    const e = this.data[k];
+    while (k !== 0 && e > this.data[this.parent(k)]) {
+      const parentK = this.parent(k);
+      this.swap(k, parentK);
+      k = parentK;
+    }
+  }
 }
+
+module.exports = MaxHeap;
