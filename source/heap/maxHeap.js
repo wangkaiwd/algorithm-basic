@@ -55,6 +55,17 @@ class MaxHeap {
     return max;
   }
 
+  // 取出最大元素，放入一个新元素
+  // 一次O(logn)操作： 直接将堆顶元素替换为新元素，然后进行下沉操作
+  replace (e) {
+    this.data[0] = e;
+    this.siftDown(0);
+  }
+
+  heapify () {
+
+  }
+
   swap (i, j) {
     const temp = this.data[i];
     this.data[i] = this.data[j];
