@@ -37,6 +37,13 @@ class MaxHeap {
     return 2 * k + 2;
   }
 
+  findMax () {
+    if (this.size() === 0) {
+      console.log('Heap is empty!');
+    }
+    return this.data[0];
+  }
+
   // 在数组末尾添加元素()，然后将其进行上浮
   // 上浮：判断其父节点是否 >= 该节点的值，如果否，进行位置交换；如果是，操作完成
   add (e) {

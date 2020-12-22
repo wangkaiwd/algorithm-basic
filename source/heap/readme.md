@@ -48,6 +48,13 @@
   * heapify的过程，算法复杂度为O(n)
     ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201221230025.png)
 
+其它的堆：
+
+* d 叉堆
+* 索引堆
+* 二项堆
+* 斐波那契堆
+
 ### 堆排序
 
 heapSort:
@@ -59,6 +66,22 @@ heapSort:
   * 原地堆排序
     ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201221231626.png)
 
+### 优先队列
+
+* getSize
+* isEmpty
+* getFront
+* enqueue
+* dequeue
+
 ### 练习
 
-* 实现最小堆
+* top K 问题: 优先队列
+  * 在N个元素中选出最大的K个元素
+  * 在N个元素中选出最小的K个元素
+  * 快排: O(n); O(1)
+  * 优先队列：时间: O(nlogk); 空间: O(k)
+  * 优先队列的优势： 不需要一次性知道所有数据；数据流，极大规模数据
+* leetcode:
+  * 剑指offer 40.
+  * 215.数组中的第K个最大元素
