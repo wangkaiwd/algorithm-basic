@@ -62,7 +62,8 @@ class MaxHeap {
     this.siftDown(0);
   }
 
-  heapify () {
+  // 将任意数组整理成堆的形状
+  heapify (arr) {
 
   }
 
