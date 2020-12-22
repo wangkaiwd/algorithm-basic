@@ -42,7 +42,8 @@
   * 直接将堆顶元素替换为新元素以后进行Sift Down, 一次O(logn)的操作
 * heapify: 将任意数组整理成堆的形状
   ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201221225054.png)
-  * 最后一个非叶子节点的索引
+  * 用数组表示一个完全二叉树：如何定位最后一个非叶子节点的索引
+    * 计算数组中最后一个元素(树(堆)中最后一个节点)的父亲节点的索引
   * 将n个元素逐个插入到一个空堆中，算法复杂度是O(nlogn)
   * heapify的过程，算法复杂度为O(n)
     ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201221230025.png)

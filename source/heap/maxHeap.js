@@ -4,7 +4,11 @@
 //  2. 父节点的值大于等于子节点的值
 class MaxHeap {
   constructor (arr) {
-    this.data = arr || [];
+    if (arr && arr.length >= 0) {
+      this.heapify(arr);
+    } else {
+      this.data = [];
+    }
   }
 
   size () {
@@ -63,8 +67,15 @@ class MaxHeap {
   }
 
   // 将任意数组整理成堆的形状
+  // 从堆中的最后一个非叶子节点开始，对该节点之前的每一个节点都进行下沉操作
+  //  1. 通过最后一个叶子节点来找到最后一个非叶子节点
+  //  2. 从最后一个叶子节点到根，对所有节点进行siftDown
   heapify (arr) {
-
+    this.data = arr;
+    let i = this.parent(this.data.length - 1);
+    for (; i >= 0; i--) {
+      this.siftDown(k);
+    }
   }
 
   swap (i, j) {
