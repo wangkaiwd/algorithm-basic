@@ -23,7 +23,7 @@ class PriorityQueue {
   }
 
   dequeue () {
-    this.queue.extractMax();
+    return this.queue.extractMax();
   }
 }
 
