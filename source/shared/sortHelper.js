@@ -23,6 +23,12 @@ function sortTest (sortName, arr) {
   console.log(`${sortName} , n = ${arr.length} : ${interval}s`);
 }
 
+/**
+ * 生成随机数组
+ * @param n 数组长度
+ * @param range 数组中元素取值范围
+ * @return {[]}
+ */
 function genRandomArray (n, range = n) {
   const arr = [];
   for (let i = 0; i < n; i++) {
