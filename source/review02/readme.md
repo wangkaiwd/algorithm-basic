@@ -89,18 +89,6 @@ const insertSort2 = (arr) => {
 * 时间复杂度: O(n^2)
 * 空间复杂度：O(1)
 
-测试：
-
-```javascript
-// 生成长度为100，元素值为1~100的随机组进行排序
-const arr = genRandomArray(100);
-const arr2 = genRandomArray(100);
-insertSort(arr);
-insertSort2(arr2);
-console.log(isSorted(arr)); // true
-console.log(isSorted(arr2)); // true
-```
-
 ### 插入排序
 
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201223162546.png)
@@ -133,4 +121,57 @@ function selectionSort (arr) {
 
 ### 归并排序
 
+要想实现归并排序，首先要实现`merge`方法。`merge`方法可以将数组的俩部分有序内容，合并为一部分有序内容
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201223172452.png)
+
+```javascript
+function merge (arr, l, mid, r) {
+  // 用一个新数组来存储原数组中的内容，防止原数组发生改变后通过索引找不到对应的值
+  const tempArray = arr.slice(l, r + 1);
+  // [l,r]
+  let i = l, j = mid + 1;
+  for (let k = l; k <= r; k++) {
+    // 左边的区域已经处理完毕，直接将右侧区域数组放到原数组中的后续位置
+    if (i > mid) {
+      arr[k] = tempArray[j - l];
+      j++;
+    } else if (j > r) {
+      arr[k] = tempArray[i - l];
+      i++;
+    } else if (tempArray[i - l] < tempArray[j - l]) {
+      arr[k] = arr[i - l];
+      i++;
+    } else {
+      arr[k] = arr[j - l];
+      j++;
+    }
+  }
+}
+```
+
+归并排序首先会通过`[l, r]`中的中间值来将范围内要排序的数组一分为二，然后分别对`[l, mid]`和`[mid+1, r]`中的元素进行排序，最终会将排序好的俩部分进行`merge`操作，合并为一个排序好的整体。
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201223174740.png)
+
+```javascript
+// 找到当前遍历范围的中间值，分别对中间值左边和右边的数组元素分别进行排序，
+// 然后将排序好的俩部分通过merge函数合并为一个整体排序好的内容
+function mergeSort (arr, l = 0, r = arr.length - 1) {
+  // [l,r]范围内只剩一个元素或者没有元素时，结束排序
+  if (l >= r) {return;}
+  const mid = Math.floor((l + r) / 2);
+  mergeSort(arr, l, mid);
+  mergeSort(arr, mid + 1, r);
+  merge(arr, l, mid, r);
+}
+```
+
+复杂度分析：
+
+* 时间复杂度：O(nlogn)
+* 空间复杂度：O(n)
+
 ### 快速排序
+
+### 测试
+
+完成上述排序算法后，

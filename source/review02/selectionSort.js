@@ -2,6 +2,7 @@
 const { genRandomArray, isSorted } = require('../shared/sortHelper');
 const { swap } = require('../shared/utils');
 
+// https://excalidraw.com/#json=5954050440822784,O9sr28emXRUXLYUP4ltqfg
 function selectionSort (arr) {
   for (let i = 0; i < arr.length; i++) {
     let minIndex = i;
