@@ -79,9 +79,11 @@ class MaxHeap {
   //  2. 从最后一个叶子节点到根，对所有节点进行siftDown
   heapify (arr) {
     this.data = arr;
+    // 获取最后一个非叶子节点的索引
     let i = this.parent(this.data.length - 1);
+    // 对非叶子节点都进行下沉操作
     for (; i >= 0; i--) {
-      this.siftDown(k);
+      this.siftDown(i);
     }
   }
 
@@ -102,9 +104,10 @@ class MaxHeap {
 
   siftDown (k) {
     const e = this.data[k];
+    // 完全二叉树，只需要判断左孩子即可
     while (this.data[this.leftChild(k)]) {
       const leftK = this.leftChild(k), leftVal = this.data[leftK];
-      const rightK = this.rightChild(k), rightVal = this.data[leftVal];
+      const rightK = this.rightChild(k), rightVal = this.data[rightK];
       // 当前节点大于等于左右节点时，结束循环
       if (e >= leftVal && e >= rightVal) {
         break;
