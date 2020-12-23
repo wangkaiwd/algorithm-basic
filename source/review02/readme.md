@@ -84,6 +84,7 @@ const insertSort2 = (arr) => {
 ```
 
 复杂度分析：
+> 当排序的数组为有序数组时，时间复杂度会降到O(n)级别
 
 * 时间复杂度: O(n^2)
 * 空间复杂度：O(1)
@@ -101,6 +102,34 @@ console.log(isSorted(arr2)); // true
 ```
 
 ### 插入排序
+
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201223162546.png)
+
+数组中`[0,i-1]`范围内的元素都是在整个数组中排序好的，我们每次要从`[i,arr.length-1]`中找到最小值与索引`i`处的值进行交换，然后`i++`。
+
+遍历完成后，`i = arr.length`，`[0, arr.length-1]`即整个数组都被排序完成
+
+```javascript
+function selectionSort (arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let minIndex = i;
+    // 从剩余元素中找到最小值的索引
+    for (let j = i; j < arr.length; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j;
+      }
+    }
+    // 与当前遍历的元素交换位置
+    swap(arr, i, minIndex);
+  }
+}
+```
+
+复杂度分析：
+> 即使数组是完全有序的数组，时间复杂度也不会降低
+
+* 时间复杂度: O(n^2)
+* 空间复杂度: O(n)
 
 ### 归并排序
 
