@@ -231,9 +231,9 @@ function mergeSort (arr, l = 0, r = arr.length - 1) {
 
 ### 快速排序
 
-快速排序首先要实现`partition`函数，该函数会在数组中指定范围`[l,r]`内中随机选择一个标定点，然后以标定点`p`对应的值`v`为中心，`[l,p-1]`为小于标定点的值，`[p+1, r]`为大于等于标定点的值，然后将`p`
+快速排序首先要实现`partition`函数，该函数会在数组中指定范围`[l,r]`中随机选择一个标定点，然后以标定点`p`对应的值`v`为中心，`[l,p-1]`为小于标定点的值，`[p+1, r]`为大于等于标定点的值，然后将`p`
 返回。其逻辑如下：
-![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201224113519.png)
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201224175522.png)
 
 代码如下：
 
@@ -254,7 +254,7 @@ const partition = (arr, l, r) => {
     }
   }
   // 全部交换完成后，此时 arr [l+1, j] < v, [j+1, i=r] > v
-  // 此时只需要降l,j对应位置的索引交换位置即可
+  // 此时只需要将l,j对应位置的索引交换位置即可
   swap(arr, l, j);
   return j;
 };
@@ -272,7 +272,7 @@ const quickSort = (arr, l = 0, r = arr.length - 1) => {
 };
 ```
 
-**当处理一个完全相同的数组时，上述算法的时间复杂度会退化到O(n^2)**。这里我们可以分别从头尾开始进行遍历，然后将大于等于`v`的元素放到数组右侧，小于等于`v`的元素放到数组左侧，保证数据的平均分布。
+**当处理一个完全相同的数组时，上述算法的时间复杂度会退化到O(n^2)**。这里我们可以分别从头尾开始进行遍历，然后将大于等于`v`的元素放到数组右侧，小于等于`v`的元素放到数组左侧，保证数据平均分布到数组的俩边。
 
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201224143629.png)
 
@@ -319,7 +319,7 @@ function quickSort (arr, l = 0, r = arr.length - 1) {
 其实，**当数组元素完全相同时，我们还可以将时间复杂度降到O(n)级别**，只需要遍历一次数组中的元素即可。下面是其逻辑演示：
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201224155955.png)
 
-代码如下：
+这就是三路快速排序，代码如下：
 
 ```javascript
 function partition (arr, l, r) {

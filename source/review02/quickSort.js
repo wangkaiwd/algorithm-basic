@@ -20,7 +20,7 @@ const partition = (arr, l, r) => {
     }
   }
   // 全部交换完成后，此时 arr [l+1, j] < v, [j+1, i=r] > v
-  // 此时只需要降l,j对应位置的索引交换位置即可
+  // 此时只需要将l,j对应位置的索引交换位置即可
   swap(arr, l, j);
   return j;
 };
