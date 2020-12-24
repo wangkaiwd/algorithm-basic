@@ -195,6 +195,10 @@ function mergeSort (arr, l = 0, r = arr.length - 1) {
 
 ### 快速排序
 
+快速排序首先要实现`partition`函数，该函数会在数组中指定范围`[l,r]`内中随机选择一个标定点，然后以标定点`p`对应的值`v`为中心，`[l,p-1]`为小于标定点的值，`[p+1, r]`为大于等于标定点的值，然后将`p`
+返回。其逻辑如下：
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201224113519.png)
+
 ### 测试
 
 完成上述排序算法后，

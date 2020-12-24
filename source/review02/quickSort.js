@@ -3,6 +3,7 @@ const { getRandom, swap } = require('../shared/utils');
 // 随机设置一个标定点元素，将将数组分为 小于等于标定点 标定点 大于等于标定点 的区域
 // 然后在分别将 [l, pivot-1] , [pivot+1, r] 区域内的元素处理为以标定点为中间值的区域
 
+// https://excalidraw.com/#json=5363831236722688,CgqFzPezTnK1Gi4RFr_99A
 const partition = (arr, l, r) => {
   // 从[l,r]范围中生成一个随机值
   const random = getRandom(l, r);
