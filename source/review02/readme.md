@@ -1,5 +1,7 @@
 ## 常见排序算法总结
 
+> 图解阅读的顺序为从左到右，从上到下
+
 近期在看一些算法相关的知识，这里总结整理下常见排序算法的`JavaScript`实现，并添加图解方便理解。
 
 下面是一些代码中会用到的公共方法，为了避免代码重复编写，笔者将其进行了单独的抽离：
@@ -143,6 +145,37 @@ function selectionSort (arr) {
 * 空间复杂度: O(n)
 
 ### 冒泡排序
+
+冒泡排序会对相邻元素进行对比，将如果前一个元素大于后一个元素，则将其与后一个元素进行位置交换。这样没进行一轮比对，在数组末尾都会多一个排序好的元素。其一轮的交换过程如下：
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201224171637.png)
+
+代码如下：
+
+```javascript
+function bubbleSort (arr) {
+  // 当只有一个元素时，不再需要进行排序
+  for (let i = 0; i < arr.length - 1;) {
+    // 最后一次进行元素交换时的索引，它之后的元素已经都排序好了，可以直接跳过它们
+    let lastSwappedIndex = 0;
+    // i 为已经排序好元素的个数
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j + 1] < arr[j]) {
+        swap(arr, j, j + 1);
+        lastSwappedIndex = j;
+      }
+    }
+    // 跳过的轮数，当处理一个完全有序数组时，lastSwappedIndex = 0，此时 i = arr.length - 1，循环结束
+    i = arr.length - lastSwappedIndex - 1;
+  }
+}
+```
+
+当最多经过`arr.length-2`轮的对比之后，就可以得到一个有序数组
+
+复杂度分析：
+
+* 时间复杂度：O(n^2)
+* 空间复杂度：O(1)
 
 ### 归并排序
 
@@ -318,6 +351,11 @@ function quickSort (arr, l = 0, r = arr.length - 1) {
   quickSort(arr, gt, r);
 }
 ```
+
+复杂度分析：
+
+* 时间复杂度: O(nlogn)
+* 空间复杂度: O(logn)
 
 ### 测试
 
