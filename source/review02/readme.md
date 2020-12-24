@@ -359,4 +359,26 @@ function quickSort (arr, l = 0, r = arr.length - 1) {
 
 ### 测试
 
-完成上述排序算法后，
+完成上述排序算法后，为了保证代码的正确性，笔者生成了1000个随机数组，并对排序后的数组进行测试：
+
+```javascript
+const arr = genRandomArray(1000)
+const arr1 = [...arr]
+const arr2 = [...arr]
+const arr3 = [...arr]
+const arr4 = [...arr]
+insertSort(arr)
+console.log(isSorted(arr)); // true
+
+selectionSort(arr1)
+console.log(isSorted(arr1)); // true
+
+bubbleSort(arr2)
+console.log(isSorted(arr2)); // true
+
+mergeSort(arr3)
+console.log(isSorted(arr3)); // true
+
+quickSort(arr4)
+console.log(isSorted(arr4)); // true
+```
