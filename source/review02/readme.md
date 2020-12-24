@@ -238,7 +238,7 @@ const quickSort = (arr, l = 0, r = arr.length - 1) => {
 };
 ```
 
-当处理一个完全相同的数组时，上述算法的时间复杂度会退化到O(n^2)。这里我们可以分别从头尾开始进行遍历，然后将大于等于`v`的元素放到数组右侧，小于等于`v`的元素放到数组左侧，保证数据的平均分布。
+**当处理一个完全相同的数组时，上述算法的时间复杂度会退化到O(n^2)**。这里我们可以分别从头尾开始进行遍历，然后将大于等于`v`的元素放到数组右侧，小于等于`v`的元素放到数组左侧，保证数据的平均分布。
 
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201224143629.png)
 
@@ -282,7 +282,42 @@ function quickSort (arr, l = 0, r = arr.length - 1) {
 }
 ```
 
-其实，当数组元素完全相同时，我们还可以将时间复杂度降到O(n)级别，只需要遍历一次数组中的元素即可。下面是其逻辑演示：
+其实，**当数组元素完全相同时，我们还可以将时间复杂度降到O(n)级别**，只需要遍历一次数组中的元素即可。下面是其逻辑演示：
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201224155955.png)
+
+代码如下：
+
+```javascript
+function partition (arr, l, r) {
+  const random = getRandom(l, r);
+  swap(arr, l, random);
+  // i,lt,gt  [l+1, lt] < v [lt+1, i-1] = v , [gt, r] > v
+  let lt = l, i = l + 1, gt = r + 1;
+  while (i < gt) {
+    if (arr[i] > arr[l]) {
+      gt--;
+      swap(arr, i, gt); // 这里i不会增加，因为新交换来的元素并不知道它的大小
+    } else if (arr[i] < arr[l]) {
+      lt++;
+      swap(arr, i, lt);
+      // 这里i++，处理下一个元素，因为交换过来的元素是在[lt+1,i-1]之间的，一定等于 arr[l]
+      i++;
+    } else { // arr[i] === arr[l]时，将i后移
+      i++;
+    }
+  }
+  swap(arr, l, lt);
+  return [lt, gt];
+}
+
+function quickSort (arr, l = 0, r = arr.length - 1) {
+  if (l >= r) {return;}
+  const [lt, gt] = partition(arr, l, r);
+  // 标定点元素的顺序已经确定了，分别对小于它和大于它的元素进行排序
+  quickSort(arr, l, lt);
+  quickSort(arr, gt, r);
+}
+```
 
 ### 测试
 

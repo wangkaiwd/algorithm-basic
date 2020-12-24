@@ -7,4 +7,4 @@
 * quick sort
   * [quick sort single way](https://excalidraw.com/#json=5363831236722688,CgqFzPezTnK1Gi4RFr_99A)
   * [quick sort two way](https://excalidraw.com/#json=6044751392407552,Eocgr_i0sElt90I16--ydQ)
-  * quick sort three way
+  * [quick sort three way](https://excalidraw.com/#json=5159362272165888,FY0ozebYxoAOA-6dihsmxg)
