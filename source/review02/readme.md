@@ -6,12 +6,24 @@
 
 ```javascript
 // utils.js
+/**
+ * 交换数组中的2个元素
+ * @param arr
+ * @param i
+ * @param j
+ */
 function swap (arr, i, j) {
   const temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
 }
 
+/**
+ * 随机生成l到r之间的一个值
+ * @param l
+ * @param r
+ * @return {*}
+ */
 function getRandom (l, r) {
   return Math.round(Math.random() * (r - l)) + l;
 }
@@ -19,6 +31,12 @@ function getRandom (l, r) {
 
 ```javascript
 // sortHelper.js
+/**
+ * 生成随机数组
+ * @param n 数组长度
+ * @param range 数组中元素取值范围
+ * @return {[]}
+ */
 function genRandomArray (n, range = n) {
   const arr = [];
   for (let i = 0; i < n; i++) {
@@ -27,6 +45,11 @@ function genRandomArray (n, range = n) {
   return arr;
 }
 
+/**
+ * 检查一个数组是否为有序数组
+ * @param arr
+ * @return {boolean}
+ */
 function isSorted (arr) {
   for (let i = 1; i < arr.length - 1; i++) {
     if (arr[i + 1] < arr[i]) {

@@ -1,8 +1,12 @@
 const quickSort = require('../quickSort/quickSort');
 const mergeSort = require('../mergeSort/mergeSort');
 
+/**
+ * 检查一个数组是否为有序数组
+ * @param arr
+ * @return {boolean}
+ */
 function isSorted (arr) {
-  // 可以使用reduce进行优化
   for (let i = 1; i < arr.length - 1; i++) {
     if (arr[i + 1] < arr[i]) {
       return false;
