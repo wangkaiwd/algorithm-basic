@@ -24,7 +24,7 @@ const partition = (arr, l, r) => {
   swap(arr, l, j);
   return j;
 };
-const quickSort = (arr, l = 0, r = arr.length) => {
+const quickSort = (arr, l = 0, r = arr.length - 1) => {
   // 范围内没有元素或者只有一个元素时，便不用再进行排序了
   if (l >= r) {return;}
   const p = partition(arr, l, r);
