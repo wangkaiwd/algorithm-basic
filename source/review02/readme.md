@@ -142,6 +142,8 @@ function selectionSort (arr) {
 * 时间复杂度: O(n^2)
 * 空间复杂度: O(n)
 
+### 冒泡排序
+
 ### 归并排序
 
 要想实现归并排序，首先要实现`merge`方法。`merge`方法可以将数组的俩部分有序内容，合并为一部分有序内容
@@ -236,7 +238,49 @@ const quickSort = (arr, l = 0, r = arr.length - 1) => {
 };
 ```
 
+当处理一个完全相同的数组时，上述算法的时间复杂度会退化到O(n^2)。这里我们可以分别从头尾开始进行遍历，然后将大于等于`v`的元素放到数组右侧，小于等于`v`的元素放到数组左侧，保证数据的平均分布。
 
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201224143629.png)
+
+这就是双路快速排序法，其代码如下：
+
+```javascript
+function partition (arr, l, r) {
+  const random = getRandom(l, r);
+  swap(arr, l, random);
+  let i = l + 1, j = r;
+  while (true) {
+    // [l+1, i-1] <= v;  [j+1, r] >= v
+    // 这里 i=j 的时候，也要进行 判断当前元素与arr[l]的关系, 来看下是否要执行i++操作
+    // 否则会漏掉这个元素
+    //  >= arr[l]时暂停
+    while (i <= j && arr[i] < arr[l]) {
+      i++;
+    }
+    // <= arr[l] 时暂停
+    while (i <= j && arr[j] > arr[l]) {
+      j--;
+    }
+    // i = j 的时候，说明 arr[i] >= arr[l] , arr[j] <= arr[l]， 即arr[i] = arr[j] = arr[l]，此时也可以结束循环
+    if (i >= j) {break;}
+    // 将i,和j位置的元素进行交换，将符合要求的元素放到对应的位置
+    swap(arr, i, j);
+    i++;
+    j--;
+  }
+  // [l+1, i-1] <= v , [j+1, r] >= v，循环结束后, arr[j] <= arr[l] , arr[i] >= arr[l]
+  // 此时将 l, j 位置的元素进行交换，就可以将标定放到正确的位置
+  swap(arr, l, j);
+  return j;
+}
+
+function quickSort (arr, l = 0, r = arr.length - 1) {
+  if (l >= r) {return;}
+  const p = partition(arr, l, r);
+  quickSort(arr, l, p - 1);
+  quickSort(arr, p + 1, r);
+}
+```
 
 ### 测试
 
