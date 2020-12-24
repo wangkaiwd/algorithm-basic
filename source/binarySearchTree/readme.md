@@ -51,6 +51,7 @@
 深度优先遍历和广度优先遍历(结合`Node.js`中对应的代码逻辑再次进行理解)：
 
 * 深度优先(前中后序遍历)
+  * [递归和非递归实现](https://blog.csdn.net/qq_42033567/article/details/105945016)
 * 广度优先遍历(层序遍历): 非递归 + 队列
   ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201217215608.png)
   * 可以更快的找到对应的元素
