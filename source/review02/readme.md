@@ -62,7 +62,7 @@ function isSorted (arr) {
 }
 ```
 
-### 选择排序
+### 插入排序
 
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201223152638.png)
 
@@ -114,7 +114,7 @@ const insertSort2 = (arr) => {
 * 时间复杂度: O(n^2)
 * 空间复杂度：O(1)
 
-### 插入排序
+### 选择排序
 
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201223162546.png)
 
@@ -142,11 +142,11 @@ function selectionSort (arr) {
 > 即使数组是完全有序的数组，时间复杂度也不会降低
 
 * 时间复杂度: O(n^2)
-* 空间复杂度: O(n)
+* 空间复杂度: O(1)
 
 ### 冒泡排序
 
-冒泡排序会对相邻元素进行对比，将如果前一个元素大于后一个元素，则将其与后一个元素进行位置交换。这样没进行一轮比对，在数组末尾都会多一个排序好的元素。其一轮的交换过程如下：
+冒泡排序会对相邻元素进行对比，将如果前一个元素大于后一个元素，则将其与后一个元素进行位置交换。这样每进行一轮比对，在数组末尾都会多一个排序好的元素。其一轮的交换过程如下：
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201224171637.png)
 
 代码如下：
@@ -185,22 +185,23 @@ function bubbleSort (arr) {
 ```javascript
 function merge (arr, l, mid, r) {
   // 用一个新数组来存储原数组中的内容，防止原数组发生改变后通过索引找不到对应的值
+  // 然后遍历新数组，将俩部分的最小值一次放入原数组中
   const tempArray = arr.slice(l, r + 1);
   // [l,r]
   let i = l, j = mid + 1;
   for (let k = l; k <= r; k++) {
-    // 左边的区域已经处理完毕，直接将右侧区域数组放到原数组中的后续位置
+    // 左边的区域已经处理完毕，直接将右侧区域剩余元素放到原数组中的后续位置
     if (i > mid) {
       arr[k] = tempArray[j - l];
       j++;
-    } else if (j > r) {
+    } else if (j > r) { // 右边区域已经处理完毕，直接将左侧区域剩余元素放到元素组中的后续位置
       arr[k] = tempArray[i - l];
       i++;
-    } else if (tempArray[i - l] < tempArray[j - l]) {
-      arr[k] = arr[i - l];
+    } else if (tempArray[i - l] < tempArray[j - l]) { // 将[i,mid] 和 [j,r]中从i,j开始的较小元素放入原数组中
+      arr[k] = tempArray[i - l];
       i++;
     } else {
-      arr[k] = arr[j - l];
+      arr[k] = tempArray[j - l];
       j++;
     }
   }
