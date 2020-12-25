@@ -177,6 +177,10 @@ function bubbleSort (arr) {
 * 时间复杂度：O(n^2)
 * 空间复杂度：O(1)
 
+### 希尔排序
+
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201225112820.png)
+
 ### 归并排序
 
 要想实现归并排序，首先要实现`merge`方法。`merge`方法可以将数组的俩部分有序内容，合并为一部分有序内容
