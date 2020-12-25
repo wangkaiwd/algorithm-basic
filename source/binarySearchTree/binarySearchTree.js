@@ -120,10 +120,11 @@ class BinarySearchTree {
   //    栈：后入先出，可以记录之前访问的元素
   preOrderNonRecur () {
     const stack = [this.root];
+    const result = [];
     // 当栈为空的时候说明处理完了所有内容
     while (stack.length !== 0) {
       const popEntry = stack.pop();
-      console.log(popEntry.element);
+      result.push(popEntry.element);
       // 由于要先处理左子树，所以要先入右子树，然后再入左子树
       if (popEntry.right) {
         stack.push(popEntry.right);
@@ -132,6 +133,7 @@ class BinarySearchTree {
         stack.push(popEntry.left);
       }
     }
+    return result;
   }
 
   // 中序遍历
@@ -141,6 +143,11 @@ class BinarySearchTree {
       console.log(node.element);
       this.inOrder(node.right);
     }
+  }
+
+  // 中序遍历非递归实现:
+  inOrderNonRecur () {
+
   }
 
   // 后续遍历
