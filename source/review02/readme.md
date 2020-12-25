@@ -179,7 +179,44 @@ function bubbleSort (arr) {
 
 ### 希尔排序
 
+希尔排序会设置一个间隔，然后为间隔内的每组元素依次进行插入排序的逻辑。直到间隔为1，为整个数组执行插入排序，完成数组的排序操作
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/20201225112820.png)
+
+代码如下：
+
+```javascript
+function shellSort (arr) {
+  // 定义初始步长
+  let step = Math.floor(arr.length / 2);
+  // 步长减小到1的过程中，分别对每组数据进行插入排序
+  while (step >= 1) {
+    // 每组元素中的开始元素
+    for (let start = 0; start < step; start++) {
+      // 对间隔为step的每组元素进行插入排序
+      for (let i = start + step; i < arr.length; i += step) {
+        const t = arr[i]; // 缓存当前值
+        let j;
+        // 与之前的所有元素进行比较，插入到合适位置
+        for (j = i; j > 0; j -= step) {
+          if (arr[j - step] > t) {
+            arr[j] = arr[j - step];
+          } else {
+            break;
+          }
+        }
+        arr[j] = t;
+      }
+    }
+    // 减少步长，继续进行插入排序
+    step = Math.floor(step / 2);
+  }
+}
+```
+
+复杂度分析：
+
+* 时间复杂度：O(nlogn) ~ O(n^2)
+* 空间复杂度：O(1)
 
 ### 归并排序
 
@@ -360,7 +397,7 @@ function quickSort (arr, l = 0, r = arr.length - 1) {
 复杂度分析：
 
 * 时间复杂度: O(nlogn)
-* 空间复杂度: O(logn)
+* 空间复杂度: O(1)
 
 ### 测试
 
