@@ -409,6 +409,7 @@ const arr1 = [...arr]
 const arr2 = [...arr]
 const arr3 = [...arr]
 const arr4 = [...arr]
+const arr5 = [...arr]
 insertSort(arr)
 console.log(isSorted(arr)); // true
 
@@ -423,4 +424,7 @@ console.log(isSorted(arr3)); // true
 
 quickSort(arr4)
 console.log(isSorted(arr4)); // true
+
+shellSort(arr5)
+console.log(isSorted(arr5)); // true
 ```
