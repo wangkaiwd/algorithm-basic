@@ -2,15 +2,11 @@ function RecentCounter () {
   this.requests = [];
 }
 
+// 数组是有序的，每次调用ping方法时，将数组中不符合要求的时间移除掉，最终返回数组的长度即可
 RecentCounter.prototype.ping = function (t) {
   this.requests.push(t);
-  const min = t - 3000;
-  let count = 0;
-  for (let i = 0; i < this.requests.length; i++) {
-    const req = this.requests[i];
-    if (min <= req && req <= t) {
-      count++;
-    }
+  while (this.requests[0] < t - 3000) {
+    this.requests.shift();
   }
-  return count;
+  return this.requests.length;
 };
