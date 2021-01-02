@@ -71,3 +71,5 @@
 ### leetcode
 
 * invert binary tree
+* 二叉树的最大深度/最小深度
+* 二叉树的前中后序遍历(递归+循环)
