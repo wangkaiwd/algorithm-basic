@@ -4,35 +4,52 @@ function TreeNode (val, left, right) {
   this.right = (right === undefined ? null : right);
 }
 
-const inorderTraversal = function (node, visitor) {
-  if (node == null) {
-    return null;
-  }
-  visitor.enter(node);
-  if (node.left) {
-    inorderTraversal(node.left, visitor);
-  }
-  if (node.right) {
-    inorderTraversal(node.right, visitor);
-  }
-  visitor.leave(node);
-};
-
 const root = {
   val: 10,
-  left: { val: 7, left: { val: 6, left: null, right: null }, right: { val: 9, left: null, right: null } },
-  right: { val: 11, left: { val: 4, left: null, right: null }, right: { val: 12, left: null, right: null } }
-};
-let indent = 0;
-inorderTraversal(root, {
-  enter (node) {
-    indent += 2;
-    console.log('enter', '-'.repeat(indent), node);
+  left: {
+    val: 7,
+    left: {
+      val: 6,
+      left: null,
+      right: null
+    },
+    right: {
+      val: 9,
+      left: null,
+      right: null
+    }
   },
-  leave (node) {
-    console.log('leave', '-'.repeat(indent), node);
-    indent -= 2;
+  right: {
+    val: 11,
+    left: {
+      val: 4,
+      left: null,
+      right: null
+    },
+    right: {
+      val: 12,
+      left: null,
+      right: null
+    }
   }
-});
+};
+// https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/dong-hua-yan-shi-94-er-cha-shu-de-zhong-xu-bian-li/
+const inorderTraversal = function (node) {
+  const stack = [];
+  const result = [];
 
+  let curr = node;
+  while (curr != null || stack.length > 0) {
+    while (curr != null) { // 先将所有的左子树入栈
+      stack.push(curr);
+      curr = curr.left;
+    }
+    curr = stack.pop(); // 出栈
+    // 将右子树入栈
+    result.push(curr.val);
+    curr = curr.right;
+  }
+  return result;
+};
 
+console.log(inorderTraversal(root));
