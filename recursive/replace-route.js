@@ -57,7 +57,6 @@ const routes = [
     children: []
   }
 ];
-const auths = { '/page2-1-2': false, '/page1-1-1': false, '/login': false };
 
 // 替换所有元素中的path字段为value
 const replaceFields = (routes) => { // 用想要的字段替换当前传入的节点，并将替换后新的节点返回
@@ -72,3 +71,4 @@ const replaceFields = (routes) => { // 用想要的字段替换当前传入的�
   });
 };
 const newRoutes = replaceFields(routes);
+console.log('newRoutes', newRoutes);
