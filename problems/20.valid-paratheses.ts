@@ -8,10 +8,10 @@ const isValidBrackets = (string: string) => {
   for (let i = 0; i < string.length; i++) {
     const current = stack[stack.length - 1];
     const element = string[i];
-    if ((map as any)[element]) { // left bracket enqueue
+    if ((map as any)[element]) { // left bracket push
       stack.push(element);
     } else {
-      if ((map as any)[current] === element) { // closed bracket, dequeue
+      if ((map as any)[current] === element) { // closed bracket, pop
         stack.pop();
       }
       // must invalid
