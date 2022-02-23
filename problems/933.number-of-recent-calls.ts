@@ -5,6 +5,7 @@ class RecentCounter {
   ping (t: number): number {
     this.queue.push(t);
     const min = t - this.threshold;
+    // get head element of queue
     while (this.queue[0] < min) {
       this.queue.shift();
     }
