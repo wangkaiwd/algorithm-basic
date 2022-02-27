@@ -9,7 +9,7 @@
  *     }
  * }
  */
-import { ListNode } from './types';
+import { ListNodeOrNull } from './types';
 
 // 1 -> 2 -> 3 -> 4 -> null
 // 4 -> 3 -> 2 -> 1 -> null
@@ -20,10 +20,8 @@ import { ListNode } from './types';
 // cur = next
 // until cur = null
 
-type NodeOrNull = ListNode | null
-
 // prev, cur, next
-function reverse (prev: NodeOrNull, cur: NodeOrNull, next: NodeOrNull): NodeOrNull {
+function reverse (prev: ListNodeOrNull, cur: ListNodeOrNull, next: ListNodeOrNull): ListNodeOrNull {
   if (cur === null) {
     return prev;
   }
@@ -34,7 +32,7 @@ function reverse (prev: NodeOrNull, cur: NodeOrNull, next: NodeOrNull): NodeOrNu
   return reverse(prev, cur, next);
 }
 
-function reverseList (head: NodeOrNull): NodeOrNull {
+function reverseList (head: ListNodeOrNull): ListNodeOrNull {
   return reverse(null, head, null);
 }
 
